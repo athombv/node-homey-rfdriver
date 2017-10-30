@@ -1,0 +1,35 @@
+@-webkit-keyframes pulse {
+    to {
+        fill: #0078cc;
+        box-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+    }
+}
+
+@keyframes pulse {
+    to {
+        fill: #0078cc;
+        box-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+    }
+}
+
+svg .pulse {
+    -moz-animation: pulse 1s infinite alternate;
+    -webkit-animation: pulse 1s infinite alternate;
+    -ms-animation: pulse 1s infinite alternate;
+    animation: pulse 1s infinite alternate;
+}
+
+svg .stop-animation {
+    -moz-animation-name: none;
+    -webkit-animation-name: none;
+    -ms-animation-name: none;
+    animation-name: none;
+}
+
+svg .hide{
+    opacity: 0 !important;
+}
+
+svg .show{
+    opacity: 1 !important;
+}

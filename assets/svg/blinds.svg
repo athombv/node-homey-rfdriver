@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="239px" height="174.314px" viewBox="-10 0 258.781 174.314" enable-background="new 0 0 198.781 174.314"
+	 xmlns:animation="-" animation:down="" animation:up="" animation:idle="" xmlns:onclick="-" xmlns:idle="-" xmlns:down="-" xmlns:up="-" xmlns:down="-" xml:space="preserve" animation:flip="noflip" xmlns:flip="-">
+	<style><![CDATA[
+     svg .down {
+        -moz-animation: down 1.5s steps(10, end) forwards;
+        -webkit-animation: down 1.5s steps(10, end) forwards;
+        -ms-animation: down 1.5s steps(10, end) forwards;
+        animation: down 1.5s steps(10, end) forwards;
+      }
+
+     svg .up {
+        -moz-animation: up 1.5s steps(10, end) forwards;
+        -webkit-animation: up 1.5s steps(10, end) forwards;
+        -ms-animation: up 1.5s steps(10, end) forwards;
+        animation: up 1.5s steps(10, end) forwards;
+      }
+
+      svg .idle{
+	    -webkit-animation-play-state: paused;
+	    animation-play-state: paused;
+      }
+
+     @-webkit-keyframes down {
+     	from{
+     		height: 26px;
+     	}
+     	to{
+     		height: 167px;
+     	}
+      }
+
+      @keyframes down {
+     	from{
+     		height: 26px;
+     	}
+     	to{
+     		height: 167px;
+     	}
+      }
+
+     @-webkit-keyframes up {
+     	from{
+     		height: 167px;
+     	}
+     	to{
+     		height: 26px;
+     	}
+      }
+
+      @keyframes up {
+     	from{
+     		height: 167px;
+     	}
+     	to{
+     		height: 26px;
+     	}
+      }
+      svg .noflip {
+		transform-origin: 50% 50%;
+        -moz-animation: noflip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+        -webkit-animation: noflip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+        -ms-animation: noflip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+        animation: noflip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+      }
+     svg .flip {
+		transform-origin: 50% 50%;
+        -moz-animation: flip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+        -webkit-animation: flip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+        -ms-animation: flip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+        animation: flip 0.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+      }
+
+     @-webkit-keyframes flip {
+          from {
+			transform: rotate(0);
+          }
+          to {
+			transform: rotate(180deg);
+          }
+      }
+
+      @keyframes flip {
+          from {
+			transform: rotate(0);
+          }
+          to {
+			transform: rotate(180deg);
+          }
+      }
+
+     @-webkit-keyframes noflip {
+          from {
+			transform: rotate(180deg);
+          }
+          to {
+			transform: rotate(0);
+          }
+      }
+
+      @keyframes noflip {
+          from {
+			transform: rotate(180deg);
+          }
+          to {
+			transform: rotate(0);
+          }
+      }
+   ]]></style><rect
+     x="6.813"
+     y="0.25"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     fill="#2B2A29"
+     width="185.25"
+     height="25.029"
+     id="rect6888" /><rect
+     x="6.813"
+     y="0.25"
+     fill="none"
+     stroke="#2B2A29"
+     stroke-width="0.5"
+     stroke-miterlimit="22.9256"
+     width="185.25"
+     height="25.029"
+     id="rect6890" /><rect
+     x="193.656"
+     y="5.969"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     fill="#2B2A29"
+     width="4.875"
+     height="14.719"
+     id="rect6892" /><rect
+     x="193.656"
+     y="5.969"
+     fill="none"
+     stroke="#2B2A29"
+     stroke-width="0.5"
+     stroke-miterlimit="22.9256"
+     width="4.875"
+     height="14.719"
+     id="rect6894" />
+	<foreignObject
+     down:direction="down"
+     up:direction="up"
+     idle:windowcoverings_state="idle"
+     style="overflow:hidden;"
+     id="blinds"
+     width="190"><svg
+       width="190"
+       height="170"
+	   style="height:170px;"><rect
+         x="15.624"
+         y="27.156"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="27.156"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="41.329"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="41.329"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="55.503"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="55.503"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="69.676"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="69.676"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="83.849"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="83.849"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="98.022"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="98.022"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="112.195"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="112.195"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="126.369"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="126.369"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="140.542"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="140.542"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="154.715"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         fill="#2B2A29"
+         width="168.189"
+         height="11.812" /><rect
+         x="15.624"
+         y="154.715"
+         fill="none"
+         stroke="#2B2A29"
+         stroke-width="0.5"
+         stroke-miterlimit="22.9256"
+         width="168.189"
+         height="11.812" /></svg>
+	</foreignObject>
+	<rect
+     x="11.688"
+     y="168.158"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     fill="#2B2A29"
+     width="176.062"
+     height="5.906"
+     id="rect6896" /><rect
+     x="11.688"
+     y="168.158"
+     fill="none"
+     stroke="#2B2A29"
+     stroke-width="0.5"
+     stroke-miterlimit="22.9256"
+     width="176.062"
+     height="5.906"
+     id="rect6898" /><rect
+     x="193.656"
+     y="27.344"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     fill="#2B2A29"
+     width="1.968"
+     height="66.564"
+     id="rect6900" /><rect
+     x="193.656"
+     y="27.344"
+     fill="none"
+     stroke="#2B2A29"
+     stroke-width="0.5"
+     stroke-miterlimit="22.9256"
+     width="1.968"
+     height="66.564"
+     id="rect6902" /><rect
+     x="0.25"
+     y="5.969"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     fill="#2B2A29"
+     width="4.875"
+     height="14.719"
+     id="rect6904" /><rect
+     x="0.25"
+     y="5.969"
+     fill="none"
+     stroke="#2B2A29"
+     stroke-width="0.5"
+     stroke-miterlimit="22.9256"
+     width="4.875"
+     height="14.719"
+     id="rect6906" /><g xmlns="http://www.w3.org/2000/svg" flip:rotated="180">
+	<g onclick:capability='{ "id": "windowcoverings_state", "value": "up"  }'>
+		<rect style="fill:#2b2a29;fill-opacity:1" id="rect7454" width="19.585583" height="16.974173" x="206.9782" y="61.934189"/>
+	<path style="fill:#ffffff;fill-opacity:1" id="path7471" d="m 218.50982,47.652327 4.43071,7.561145 4.43072,7.561143 -8.7635,0.05654 -8.7635,0.05654 4.33278,-7.617684 z" transform="matrix(0.94412739,0,0,0.73860805,10.369478,29.731462)"/>
+	</g>
+	<g onclick:capability='{ "id": "windowcoverings_state", "value": "idle"  }'>
+		<rect style="fill:#2b2a29;fill-opacity:1" id="rect7454" width="19.585583" height="16.974173" x="206.9782" y="82.934189"/>
+
+	<rect style="fill:#ffffff;fill-opacity:1" id="rect7454" width="13.985583" height="10.974173" x="209.9782" y="85.934189"/></g>
+	<g onclick:capability='{ "id": "windowcoverings_state", "value": "down"  }'>
+		<rect style="fill:#2b2a29;fill-opacity:1" id="rect7454-7" width="19.585583" height="16.974173" x="206.9129" y="103.341507"/>
+	<path style="fill:#ffffff;fill-opacity:1" id="path7471-0" d="m 218.50982,47.652327 4.43071,7.561145 4.43072,7.561143 -8.7635,0.05654 -8.7635,0.05654 4.33278,-7.617684 z" transform="matrix(-0.94412739,0,0,-0.73860805,423.05536,152.35382)"/>
+	</g>
+	</g>
+</svg>

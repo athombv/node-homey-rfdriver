@@ -1,0 +1,96 @@
+<script>
+	var options = {
+		// The id of the template. This should equal the id in your app.json.
+		id: 'test_switch',
+		// The title of the pair window
+		title: 'generator.pair.test.title.default',
+		// The body text
+		body: 'generator.pair.test.body.switch',
+		// The capability to test e.g. onoff.
+		capability: 'onoff',
+		// The width of the svg
+		svgWidth: '80vw',
+		// The height of the svg
+		svgHeight: '70vh',
+		// If the svghighlighter should start highlighting with the last received frame
+		initWithDeviceData: false,
+		// The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
+		svg: '../../../assets/RFDriver/svg/light.svg',
+		// If a signal should be send when this view is opened change this from null to the value which corresponds to the capability option above.
+		sendValueOnInit: null,
+		// Add setting switches to test view to let the user set-up their device in the pair wizard. Can be set to false to disable
+		settings: {
+			// Settings can be set to true or an object if they should be shown. The object can contain options e.g.
+		    // rotated: {
+		    //     label: 'my.label'
+		    // }
+			// Add toggle to interpret all signals upside down
+			rotated: true,
+		},
+	};
+</script>
+
+<!-- Below is the template, if you edit this part the template will no longer be updated with changes and bugfixes from RFDriver -->
+<!-- If you did overwrite the template and wish to update the template you can remove this template from the template-lock.json file -->
+<!-- Warning. If you do remove this template from the template-lock.json all manual changes will be overwritten! -->
+<!--START OF TEMPLATE-->
+<link href="../../../assets/RFDriver/css/styles.css" rel="stylesheet" type="text/css"/>
+
+<link href="../../../assets/RFDriver/css/svg.css" rel="stylesheet" type="text/css"/>
+
+<script src="../../../assets/RFDriver/js/base.js" type="text/javascript"></script>
+<script src="../../../assets/RFDriver/js/svghighlighter.js" type="text/javascript"></script>
+
+<div class="centered-container">
+	<div id="image-container"></div>
+	<div id="body"><span class="content"></span></div>
+</div>
+
+<script>
+	var $view = $('[data-id="' + options.id + '"]');
+	if (!$view.length) {
+		$('#body').html('Could not locate view window for id ' + options.id + '. Please make sure the id is configured properly in your pair template settings.');
+	}
+	var $body = $view.find('#body');
+	$body.find('.content').html(__(options.body));
+	var $imageContainer = $view.find('#image-container');
+	$imageContainer.css('width', options.svgWidth).css('height', options.svgHeight);
+
+	parseSvg(options.svg, function (svg) {
+		$imageContainer.html(svg);
+		Homey.emit('test', function (err, deviceState) {
+			if (err) {
+				showErrorMessage(err);
+				return;
+			}
+
+			$imageContainer.find('[onclick\\:toggle="undefined"]').each((index, elem) => $(elem).attr('onclick:toggle', options.capability));
+			$imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
+			if (options.sendValueOnInit !== null) {
+				Homey.emit('capability', { id: options.capability, value: options.sendValueOnInit });
+			}
+		});
+		if (options.settings && Object.keys(options.settings).length) {
+			Homey.emit('get_settings', function (err, settings) {
+				const rotatedSetting = settings.find(setting => setting.id === 'rotated');
+				console.log('TST', options.settings, rotatedSetting, options.settings.rotated && rotatedSetting);
+				if (options.settings.rotated && rotatedSetting) {
+					$body.append(
+						$('<div>').append(
+							$('<input id="invert-checkbox" type="checkbox" ' + (rotatedSetting.value === '180' ? 'checked="checked"' : '') + ' style="position: relative; bottom: 1px; vertical-align: middle;">')
+								.on('change', function () {
+									var newSettings = { rotated: this.checked ? '180' : '0' };
+									Homey.emit('set_setting', newSettings, function () {
+										Homey.highlight(newSettings);
+									})
+								}),
+							$('<label for="invert-checkbox" style="padding: 0 1em;">')
+								.html(options.settings.rotated.label ? __(options.settings.rotated.label) : __(rotatedSetting.label))
+						)
+					);
+				}
+			});
+		}
+	});
+</script>
+<!--END OF TEMPLATE-->

@@ -1,0 +1,114 @@
+<script>
+	var options = {
+		// The id of the template. This should equal the id in your app.json.
+		id: 'codewheel',
+		// The title of the pair window
+		title: 'generator.pair.codewheel.title.default',
+		// The body text
+		body: 'generator.pair.codewheel.body.default',
+		// A list containing 1 or more codewheel configs
+		codewheelList: [
+			{
+				// The labels on this codewheel
+				series: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'],
+				// If the odd labels should be hidden and showed as dots
+				mappOddToDot: true,
+			}
+		]
+	};
+</script>
+
+<!-- Below is the template, if you edit this part the template will no longer be updated with changes and bugfixes from RFDriver -->
+<!-- If you did overwrite the template and wish to update the template you can remove this template from the template-lock.json file -->
+<!-- Warning. If you do remove this template from the template-lock.json all manual changes will be overwritten! -->
+<!--START OF TEMPLATE-->
+<link href="../../../assets/RFDriver/css/codewheel.css" rel="stylesheet" type="text/css"/>
+
+<script src="../../../assets/RFDriver/js/base.js" type="text/javascript"></script>
+<script src="../../../assets/RFDriver/js/codewheel.js" type="text/javascript"></script>
+
+<div class="centered-container">
+	<div id="codewheel-container"></div>
+	<div id="body"><span class="content"></span></div>
+</div>
+
+<script>
+	var $view = $('[data-id="' + options.id + '"]');
+	if (!$view.length) {
+		$('#body').html('Could not locate view window for id ' + options.id + '. Please make sure the id is configured properly in your pair template settings.');
+	}
+	var $body = $view.find('#body');
+	$body.find('.content').html(__(options.body));
+	var $codewheelContainer = $view.find('#codewheel-container');
+	var codewheelElems = [];
+
+	function onCodewheelChange() {
+		Homey.emit('set_device_codewheels', codewheelElems.map(function (elem) {
+			return elem.getValue();
+		}));
+	}
+
+	if ($codewheelContainer.is(':empty')) {
+		options.codewheelList.map(function (codewheelOptions) {
+			var codewheelElem = $('<div>')
+				.addClass('codewheel')
+				.codewheel(Object.assign({ onChange: onCodewheelChange }, codewheelOptions));
+			codewheelElems.push(codewheelElem);
+			$codewheelContainer.append(codewheelElem);
+		});
+	}
+
+	if (!$view.find('.view-navigation-next.dummy').length) {
+		var $nextButton = $view.find('.view-navigation-next');
+		var $nextButtonDummy = $nextButton.clone().addClass('dummy');
+		$nextButton.hide();
+		$nextButton.parent().append($nextButtonDummy);
+
+		$nextButtonDummy.on('click', function (e) {
+			Homey.emit('assert_device', function (err, deviceState) {
+				if (err) {
+					showErrorMessage(err);
+					return;
+				}
+				Homey.emit('program_send', function (err) {
+					if (err) {
+						showErrorMessage(err);
+						return;
+					}
+					const dataKey = JSON.stringify(deviceState.data);
+					window.selected_devices = [dataKey];
+					window.found_devices = {};
+					window.found_devices[dataKey] = deviceState;
+					$nextButtonDummy.siblings('.view-navigation-next').click();
+				});
+			});
+			e.stopPropagation();
+			return false;
+		});
+	}
+
+	Homey.emit('get_device', function (err, deviceState) {
+		if (deviceState && deviceState.data && deviceState.data.codewheelIndexes) {
+			deviceState.data.codewheelIndexes.forEach(function (position, index) {
+				if (codewheelElems[index]) {
+					codewheelElems[index].setCodewheelIndex(position);
+				}
+			});
+		} else {
+			Homey.emit('program', function (err, programDeviceState) {
+				if (programDeviceState && programDeviceState.data && programDeviceState.data.codewheelIndexes) {
+					programDeviceState.data.codewheelIndexes.forEach(function (position, index) {
+						if (codewheelElems[index]) {
+							codewheelElems[index].setCodewheelIndex(position);
+						}
+					});
+				} else {
+					Homey.emit('set_device_codewheels', codewheelElems.map(function (elem) {
+						return elem.getValue();
+					}));
+				}
+			});
+		}
+	});
+</script>
+<!--END OF TEMPLATE-->

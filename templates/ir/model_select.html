@@ -1,0 +1,283 @@
+<script>
+	var options = {
+		// The id of the template. This should equal the id in your app.json.
+		id: 'model_select',
+		// The title of the pair window
+		title: 'pair.model_select.title',
+		// The body text
+		body: 'pair.model_select.body',
+		// The width of the svg
+		svgWidth: '80vw',
+		// The height of the svg
+		svgHeight: '70vh',
+		// [Optional] The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
+		svg: '../../../assets/RFDriver/svg/bell.svg',
+		// The type of test to use, can be command|payload|button
+		type: 'command',
+		// The options that are possible using the above test
+		options: [
+			{
+				// The command(s) to test for if this option should be selected
+				command: ['cmd1', 'cmd2'],
+				// The metadata that should be applied to the deviceData object when this option is selected
+				metadata: {},
+				// These tests are recursive so for instance here a test can be done with a button click from a user (a choice)
+				// type: 'button'
+				// options: [
+				//    ...
+				// ]
+			},
+			{
+				// The command(s) to test for if this options should be selected
+				command: ['cmd3'],
+				// The metadata that should be applied to the deviceData object when this option is selected
+				metadata: {},
+			},
+		]
+	};
+</script>
+
+<!-- Below is the template, if you edit this part the template will no longer be updated with changes and bugfixes from RFDriver -->
+<!-- If you did overwrite the template and wish to update the template you can remove this template from the template-lock.json file -->
+<!-- Warning. If you do remove this template from the template-lock.json all manual changes will be overwritten! -->
+<!--START OF TEMPLATE-->
+<link href="../../../assets/RFDriver/css/styles.css" rel="stylesheet" type="text/css"/>
+
+<link href="../../../assets/RFDriver/css/svg.css" rel="stylesheet" type="text/css"/>
+
+<script src="../../../assets/RFDriver/js/base.js" type="text/javascript"></script>
+<script src="../../../assets/RFDriver/js/svghighlighter.js" type="text/javascript"></script>
+
+<div class="centered-container">
+	<div id="image-container"></div>
+	<div id="body">
+		<div id="model-select-button-container"></div>
+		<span class="content"></span>
+	</div>
+	<div class="foundAnimation" id="foundBackground" style="display:none;"></div>
+	<i class="fa fa-check-circle foundAnimation" id="found" style="display:none;" aria-hidden="true"></i>
+</div>
+<div id="use-defaults">
+	<button class="button" style="display:none"><span></span></button>
+</div>
+
+<script>
+	var $view = $('[data-id="' + options.id + '"]');
+	if (!$view.length) {
+		$('#body').html('Could not locate view window for id ' + options.id + '. Please make sure the id is configured properly in your pair template settings.');
+	}
+	var $body = $view.find('#body');
+	var $imageContainer = $view.find('#image-container');
+	var $buttonContainer = $view.find('#model-select-button-container');
+	var $foundElem = $view.find('.foundAnimation');
+	var $defaultsButton = $view.find(' #use-defaults button');
+
+	function nextAnimation(opts) {
+		$foundElem.show();
+		setTimeout(function () {
+			$foundElem.addClass('fadeOut');
+			setTimeout(function () {
+				$foundElem.hide();
+				$foundElem.removeClass('fadeOut');
+				if (opts.options && opts.options.length) {
+					found = false;
+					displayQuery(opts);
+				} else {
+					nextView();
+				}
+			}, 500);
+		}, 500);
+	}
+
+	function next(opts) {
+		found = true;
+		if (opts.metadata) {
+			Homey.emit('append_device_metadata', opts.metadata, function (err, device) {
+				if (err) {
+					if ((err.message || err) !== '433_generator.error.invalid_device') {
+						Homey.alert(err.message && err.message.indexOf(' ') === -1 && __(err.message) !== err.message ? __(err.message) : JSON.stringify(err));
+					}
+					return;
+				}
+				nextAnimation(opts);
+			});
+		} else {
+			nextAnimation(opts);
+		}
+	}
+
+	function displayQuery(opts) {
+		$body.find('.content').html(__(opts.body || ''));
+		$imageContainer.css('width', opts.svgWidth || options.svgWidth).css('height', opts.svgHeight || options.svgHeight);
+		$buttonContainer.html('');
+
+		$imageContainer.show();
+
+		parseSvg(opts.svg, function (svg) {
+			$imageContainer.html(svg);
+			$imageContainer.highlight();
+		});
+
+
+		if (opts.default) {
+			$defaultsButton.html(__(opts.default.label || "views.model_select.defaults_button"));
+			$defaultsButton.css('display', 'inline');
+			$defaultsButton.on('click', function () {
+				next(opts.default);
+			});
+			console.log('default ', opts.default);
+		}
+
+		opts.type = opts.type || options.type;
+		if (opts.type === 'payload') {
+			var payloads = {};
+			opts.options.forEach(function (option) {
+				if (Array.isArray(option.payload) && typeof option.payload[0] !== 'number') {
+					option.payload.forEach(function (payload) {
+						payloads[Array.isArray(payload) ? payload.join('') : payload] = option;
+					});
+				} else {
+					payloads[Array.isArray(option.payload) ? option.payload.join('') : option.payload] = option;
+				}
+			});
+			var keys = Object.keys(payloads);
+			var done = false;
+			var onPayloadListener = function (data) {
+				if (done) return;
+				console.log('GOT FRAME', data);
+				if (!done && keys.indexOf(data.join('')) !== -1) {
+					done = true;
+					next(payloads[data.join('')]);
+				}
+			};
+			Homey.on('payload', onPayloadListener);
+		} else if (opts.type === 'command') {
+			var commands = {};
+			opts.options.forEach(function (option) {
+				if (Array.isArray(option.command)) {
+					option.command.forEach(function (cmd) {
+						commands[cmd] = option;
+					});
+				} else {
+					commands[option.command] = option;
+				}
+			});
+			var cmds = Object.keys(commands);
+			var done = false;
+			var onCommandListener = function (cmd) {
+				if (done) return;
+				console.log('GOT CMD', cmd);
+				if (!done && cmds.indexOf(cmd) !== -1) {
+					done = true;
+					next(commands[cmd]);
+				}
+			};
+			Homey.on('command', onCommandListener);
+		} else if (opts.type === 'button') {
+			console.log('type is button', opts);
+			opts.options.forEach(function (option) {
+				const $container = $('<div>').addClass('button-container');
+				const $button = $('<button>').addClass('button');
+				$button.on('click', function () {
+					next(option);
+				});
+				console.log(option);
+				if (option.button && option.button.constructor && option.button.constructor.name === 'Object') {
+					$button.html(__(option.button.label));
+					if (option.button.svg) {
+						$imageContainer.hide();
+						$container.append(
+							$('<div>')
+								.addClass('button-image')
+								.html(option.button.svg)
+								.css('height', option.button.svgHeight || opts.svgHeight || options.svgHeight)
+						);
+					}
+				} else if (typeof option.button === 'string') {
+					$button.html(__(option.button));
+				}
+				$container.append($button);
+				$buttonContainer.append($container);
+			});
+		} else {
+			console.log('[ERROR] invalid modelSelect type', opts.type);
+		}
+	}
+
+	function displayFirstQuery() {
+		console.log('displayFirstQuery', options);
+		if (options.options && options.options.length) {
+			displayQuery(options);
+		} else {
+			nextView();
+		}
+	}
+
+	if (options.metadata) {
+		Homey.emit('set_device_metadata', options.metadata, function (err, device) {
+			if (err) {
+				if ((err.message || err) !== '433_generator.error.invalid_device') {
+					Homey.alert(err.message && err.message.indexOf(' ') === -1 && __(err.message) !== err.message ? __(err.message) : JSON.stringify(err));
+				}
+				return;
+			}
+			displayFirstQuery();
+		});
+	} else {
+		Homey.emit('reset_device_metadata', null, function (err, device) {
+			if (err) {
+				if ((err.message || err) !== '433_generator.error.invalid_device') {
+					Homey.alert(err.message && err.message.indexOf(' ') === -1 && __(err.message) !== err.message ? __(err.message) : JSON.stringify(err));
+				}
+				return;
+			}
+			displayFirstQuery();
+		});
+	}
+</script>
+
+<style>
+	#use-defaults {
+		position: absolute;
+		bottom: 1px;
+		z-index: 5000;
+		width: 100%;
+		text-align: center;
+		pointer-events: none;
+	}
+
+	#use-defaults button {
+		pointer-events: auto;
+	}
+
+	#found {
+		z-index: 2;
+		position: absolute;
+		top: 20vh;
+		left: 38vw;
+		font-size: 30vh;
+		color: #080;
+		opacity: 1;
+	}
+
+	#foundBackground {
+		z-index: 1;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		position: absolute;
+		background-color: #FFF;
+		opacity: 0.8;
+	}
+
+	.fadeOut {
+		-webkit-transition: all 0.5s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		-ms-transition: all 0.5s ease-in-out;
+		-o-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
+		opacity: 0 !important;
+	}
+</style>
+<!--END OF TEMPLATE-->

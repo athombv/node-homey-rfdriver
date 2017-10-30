@@ -1,0 +1,41 @@
+<script>
+	var options = {
+		// The id of the template.
+		id: 'done',
+		// The title of the pair window
+		title: 'generator.pair.done.title.default',
+	};
+</script>
+
+<!-- Below is the template, if you edit this part the template will no longer be updated with changes and bugfixes from RFDriver -->
+<!-- If you did overwrite the template and wish to update the template you can remove this template from the template-lock.json file -->
+<!-- Warning. If you do remove this template from the template-lock.json all manual changes will be overwritten! -->
+<!--START OF TEMPLATE-->
+<script src="../../../assets/RFDriver/js/base.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	setTimeout(function () {
+		Homey.emit('done', function (err, deviceObj) {
+			// TODO check how to make this work!
+			var virtualDeviceClass;
+			$('.deviceclasses-list input:checked').each(function () {
+				if ($(this).attr('name').indexOf('"id":"' + device.data.id + '"') !== -1) {
+					console.log('hasVirtualDeviceClass@!');
+					virtualDeviceClass = $(this);
+				}
+			});
+
+			if (virtualDeviceClass) {
+				deviceObj.virtualClass = $(virtualDeviceClass).val();
+				deviceObj.virtualCapabilities = $(virtualDeviceClass).data('capabilities').split(',');
+			}
+
+			Homey.addDevice(deviceObj, function () {
+				Homey.done();
+			});
+		});
+	}, 1000);
+</script>
+
+<i class="loading fa fa-cog fa-spin"></i>
+<!--END OF TEMPLATE-->
