@@ -36,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/athombv/node-homey-rfdriver/issues"
   },
-  "homepage": "https://github.com/athombv/node-homey-rfdriver#readme"
+  "homepage": "https://github.com/athombv/node-homey-rfdriver#readme",
+  "config": {
+    "npmPublishTagProduction": "latest"
+  }
 }
