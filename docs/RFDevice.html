@@ -86,6 +86,75 @@
 
         <tr>
             
+                <td class="name"><code>driver</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RFDriver.html">RFDriver</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The driver instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The options for this device as configured in the 'rf' property of the driver</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>signal</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Signal.html">Signal</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The signal instance for this device instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>logger</code></td>
             
 
@@ -102,7 +171,7 @@
 
             
 
-            <td class="description last"><p>The logger instance</p></td>
+            <td class="description last"><p>The logger instance for this device instance</p></td>
         </tr>
 
     
@@ -150,6 +219,25 @@
 
 
 
+
+<h5>Fires:</h5>
+<ul>
+    <li><a href="RFDevice.html#event:data">RFDevice#event:data</a></li>
+
+    <li><a href="RFDevice.html#event:before_send">RFDevice#event:before_send</a></li>
+
+    <li><a href="RFDevice.html#event:send">RFDevice#event:send</a></li>
+
+    <li><a href="RFDevice.html#event:after_send">RFDevice#event:after_send</a></li>
+
+    <li><a href="RFDevice.html#event:before_send_cmd">RFDevice#event:before_send_cmd</a></li>
+
+    <li><a href="RFDevice.html#event:send_cmd">RFDevice#event:send_cmd</a></li>
+
+    <li><a href="RFDevice.html#event:after_send_cmd">RFDevice#event:after_send_cmd</a></li>
+
+    <li><a href="RFDevice.html#event:error">RFDevice#event:error</a></li>
+</ul>
 
 
 
@@ -2772,6 +2860,1143 @@ Note that you should register all capability listeners inside this function an n
     
 
     
+        <h3 class="subsection-title">Events</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:after_send">after_send</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired fired after this.<a href="Signal.html">signal</a>.<a href="Signal.html#send">send</a> is finished.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data object that was send</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:after_send_cmd">after_send_cmd</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired fired after this.<a href="Signal.html">signal</a>.cmd is finished.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cmd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Signal.html">Signal</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The command that was send</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:before_send">before_send</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired when this.send is called, before this.parseOutgoingData is called.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data object to be send</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:before_send_cmd">before_send_cmd</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired when this.cmd is called.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cmd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The command to be send</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:data">data</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired when a new data object is received and parsed by this.<a href="RFDevice.html#.payloadToData">payloadToData</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data object received</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:error">error</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired when a error occured</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>err</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The error that occurred</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:send">send</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired when this.send is called, just before this calling this.<a href="Signal.html">signal</a>.<a href="Signal.html#send">send</a> is called.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data object to be send</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>frame</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The frame that will be given to this.signal.send</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataCheck</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The result of this.RFDevice#payloadToData(frame)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:send_cmd">send_cmd</h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Fired when this.cmd is called, just before this calling this.<a href="Signal.html">signal</a>.<a href="Signal.html#send">cmd</a> is called.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cmd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The command to be send</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cmdObj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#cmdObj">cmdObj</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parsed command</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
 </article>
 
 </section>
@@ -2782,13 +4007,13 @@ Note that you should register all capability listeners inside this function an n
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Logger.html">Logger</a></li><li><a href="RFDevice.html">RFDevice</a></li><li><a href="RFDriver.html">RFDriver</a></li><li><a href="Signal.html">Signal</a></li><li><a href="Util.html">Util</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Logger.html">Logger</a></li><li><a href="RFDevice.html">RFDevice</a></li><li><a href="RFDriver.html">RFDriver</a></li><li><a href="Signal.html">Signal</a></li><li><a href="Util.html">Util</a></li></ul><h3>Events</h3><ul><li><a href="RFDevice.html#event:after_send">after_send</a></li><li><a href="RFDevice.html#event:after_send_cmd">after_send_cmd</a></li><li><a href="RFDevice.html#event:before_send">before_send</a></li><li><a href="RFDevice.html#event:before_send_cmd">before_send_cmd</a></li><li><a href="RFDevice.html#event:data">data</a></li><li><a href="RFDevice.html#event:error">error</a></li><li><a href="RFDevice.html#event:send">send</a></li><li><a href="RFDevice.html#event:send_cmd">send_cmd</a></li><li><a href="Signal.html#event:cmd">cmd</a></li><li><a href="Signal.html#event:cmd_send">cmd_send</a></li><li><a href="Signal.html#event:data">data</a></li><li><a href="Signal.html#event:error">error</a></li><li><a href="Signal.html#event:payload">payload</a></li><li><a href="Signal.html#event:payload_send">payload_send</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 30 2017 18:14:36 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 30 2017 20:46:42 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
