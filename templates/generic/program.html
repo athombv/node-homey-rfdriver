@@ -6,6 +6,8 @@
 		title: 'generator.pair.program.title.default',
 		// The body text
 		body: 'generator.pair.program.body.default',
+		// The label of the button that the user can click start sending the pair signal
+		buttonLabel: 'generator.pair.program.programbutton.default',
 		// The width of the svg
 		svgWidth: '80vw',
 		// The height of the svg
@@ -54,8 +56,9 @@
 		$imageContainer.highlight();
 	});
 
-	var $nextButton = $view.find('#program_button');
-	$nextButton.on('click', function (e) {
+	var $programButton = $view.find('#program_button');
+	$programButton.html(__(options.buttonLabel));
+	$programButton.on('click', function (e) {
 		$programElems.show();
 		Homey.emit('program_send', function (err) {
 			$programElems.hide();
