@@ -55,7 +55,7 @@ module.exports = {
 			},
 		},
 		choice: {
-			version: '1.0.0',
+			version: '1.0.1',
 			template: './generic/choice.html',
 			options: {
 				navigation: {
@@ -112,12 +112,12 @@ module.exports = {
 								},
 								buttons: {
 									copy: {
-										default: 'Kopieer de afstandsbediening',
+										default: 'Kopieer afstandsbediening',
 									},
 									generate: {
-										default: 'Genereer een nieuwe signaal',
-										codewheel: 'Handmatig lettercodeshijf instellen',
-										dipswitch: 'Stel de dipswitches in',
+										default: 'Genereer nieuw signaal',
+										codewheel: 'lettercodeshijf instellen',
+										dipswitch: 'dipswitches instellen',
 									},
 								},
 							},
@@ -275,7 +275,7 @@ module.exports = {
 								},
 							},
 						},
-						settings: (device) => device.settings
+						settings: (device) => (device.settings || {})
 							.reduce((res, obj) => res.concat((obj.type === 'group' ? obj.children : obj) || []), [])
 							.some(setting => setting.id === 'rotated') ? ({
 							groups: {
@@ -312,7 +312,7 @@ module.exports = {
 								},
 							},
 						},
-						settings: (device) => device.settings
+						settings: (device) => (device.settings || {})
 							.reduce((res, obj) => res.concat((obj.type === 'group' ? obj.children : obj) || []), [])
 							.some(setting => setting.id === 'rotated') ? ({
 							groups: {

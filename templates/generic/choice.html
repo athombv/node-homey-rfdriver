@@ -14,7 +14,7 @@
 		choices: [
 			{
 				// The label of the button under this choice
-				name: 'generator.pair.choice.0.name',
+				name: 'generator.pair.choice.buttons.copy.default',
 				// The view id that should be loaded when the button is clicked
 				view: 'myNextView',
 				// The svg that is placed above the button
@@ -22,7 +22,7 @@
 			},
 			{
 				// The label of the button under this choice
-				name: 'generator.pair.choice.1.name',
+				name: 'generator.pair.choice.buttons.generate.default',
 				// The view id that should be loaded when the button is clicked
 				view: 'myOtherView',
 				// The svg that is placed above the button
@@ -58,11 +58,11 @@
 	$imageContainer.css('width', options.svgWidth).css('height', options.svgHeight);
 	var $choiceContainer = $view.find('#choice-button-container');
 
-	options.choices.forEach(function (choice) {
-		parseSvg(choice.svg, function (svg) {
+	function showChoices(){
+		options.choices.forEach(function (choice) {
 			$choiceContainer.append(
 				$('<div>').addClass('button-container')
-					.html(svg)
+					.html(choice.svg)
 					.append(
 						$('<button>')
 							.addClass('button')
@@ -70,6 +70,15 @@
 					)
 					.on('click', Homey.showView.bind(Homey, choice.view))
 			);
+		});
+	}
+	var svgLoadCount = 0;
+	options.choices.forEach(function (choice) {
+		parseSvg(choice.svg, function (svg) {
+			choice.svg = svg;
+			if(++svgLoadCount === options.choices.length) {
+			    showChoices();
+			}
 		});
 	});
 </script>
