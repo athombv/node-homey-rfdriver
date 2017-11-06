@@ -201,7 +201,7 @@ module.exports = {
 			},
 		},
 		program: {
-			version: '1.0.0',
+			version: '1.0.1',
 			template: './generic/program.html',
 			options: {
 				navigation: {
@@ -214,13 +214,16 @@ module.exports = {
 					generator: {
 						pair: {
 							program: {
+								programbutton: {
+									default: 'Program',
+								},
 								title: {
 									default: 'Pair your device with Homey',
 									socket: 'Put the socket in pairing mode',
 								},
 								body: {
-									default: 'Put your device in pairing mode, then click next to pair your device with Homey.',
-									socket: 'Press the program button on your socket to put it in pairing mode, then click next.',
+									default: 'Put your device in pairing mode, then click the \'Program\' button to pair your device with Homey.',
+									socket: 'Press the program button on your socket to put it in pairing mode, then click the \'Program\' button.',
 								},
 							},
 						},
@@ -230,13 +233,16 @@ module.exports = {
 					generator: {
 						pair: {
 							program: {
+								programbutton: {
+									default: 'Programmeer',
+								},
 								title: {
 									default: 'Programmeer het apparaat met Homey',
 									socket: 'Zet de contactdoos in programmeer modus',
 								},
 								body: {
-									default: 'Zet het apparaat in programmeer modus en klik op volgende om het apparaat met Homey te verbinden.',
-									socket: 'Houd de programmeer knop van de contactdoos een paar seconden ingehouden om deze in programeer modus te zetten. Klik daarna op volgende.',
+									default: 'Zet het apparaat in programmeer modus en klik op \'Programmeer\' om het apparaat met Homey te verbinden.',
+									socket: 'Houd de programmeer knop van de contactdoos een paar seconden ingehouden om deze in programeer modus te zetten. Klik daarna op de \'Programmeer\' knop.',
 								},
 							},
 						},
