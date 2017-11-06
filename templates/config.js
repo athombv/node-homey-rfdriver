@@ -142,10 +142,12 @@ module.exports = {
 					},
 				},
 				nl: {
-					pair: {
-						done: {
-							title: {
-								default: 'Apparaat wordt toegevoegd!',
+					generator: {
+						pair: {
+							done: {
+								title: {
+									default: 'Apparaat wordt toegevoegd!',
+								},
 							},
 						},
 					},
