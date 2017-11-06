@@ -1,6 +1,6 @@
 {
   "name": "homey-rfdriver",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "RFDriver for Homey Apps",
   "main": "index.js",
   "directories": {
