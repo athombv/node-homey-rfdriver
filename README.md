@@ -5,6 +5,9 @@ This module is used to make the creation of 433, 868 and Infrared apps easier.
 
 It is essentially a map-tool from Homey-capabilities to signal payloads for 433/868/ir.
 
+## Docs
+See https://athombv.github.io/node-homey-rfdriver/
+
 ## Installation
 ```bash
 npm install -g node-homey-config-composer

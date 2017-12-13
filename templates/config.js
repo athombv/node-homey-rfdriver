@@ -283,7 +283,7 @@ module.exports = {
 								},
 							},
 						},
-						settings: (device) => (device.settings || {})
+						settings: (device) => (device.settings || [])
 							.reduce((res, obj) => res.concat((obj.type === 'group' ? obj.children : obj) || []), [])
 							.some(setting => setting.id === 'rotated') ? ({
 							groups: {
