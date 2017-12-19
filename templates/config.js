@@ -206,7 +206,7 @@ module.exports = {
 			options: {
 				navigation: {
 					prev: true,
-					next: true,
+					next: false,
 				},
 			},
 			locales: {
