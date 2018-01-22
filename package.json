@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "fs-extra": "^4.0.2",
+    "marked": "^0.3.12",
     "merge-options": "^1.0.0",
     "semver-diff": "^2.1.0"
   },
