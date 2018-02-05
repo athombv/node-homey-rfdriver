@@ -3,7 +3,7 @@
 module.exports = {
 	generic: {
 		imitate: {
-			version: '1.0.0',
+			version: '1.0.1',
 			template: './generic/imitate.html',
 			options: {
 				navigation: {
@@ -127,7 +127,7 @@ module.exports = {
 			},
 		},
 		done: {
-			version: '1.0.0',
+			version: '1.0.1',
 			template: './generic/done.html',
 			locales: {
 				en: {

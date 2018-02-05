@@ -85,6 +85,9 @@ module.exports = {
 				no_device: 'No device set to pair. Please close the pairing wizard and try again.',
 				no_settings: 'No settings object. Please try again.',
 				invalid_device: 'The device that was created is invalid. Please remove it and try pairing it again.',
+				invalid_device_data: 'The device that was created is invalid. Please remove it and try pairing it again.',
+				data_no_object: 'Data must be an object!',
+				pairdevice_invalid_data: 'New pairing device data is invalid, changes are reverted.',
 			},
 		}
 	},

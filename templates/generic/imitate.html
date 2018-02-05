@@ -51,30 +51,32 @@
 	});
 
 	var found = false;
-	Homey.on('frame', function (data) {
-		console.log('GOT FRAME', data);
-		if (!found) {
-			found = true;
-			Homey.emit('set_device', { data: data }, function (err, deviceState) {
-				if (err) {
-					if ((err.message || err) !== '433_generator.error.invalid_device') {
-						showErrorMessage(err);
+	Homey.emit('reset_device', null, function () {
+		Homey.on('frame', function (data) {
+			console.log('GOT FRAME', data);
+			if (!found) {
+				found = true;
+				Homey.emit('set_device', { data: data }, function (err, deviceState) {
+					if (err) {
+						if ((err.message || err) !== '433_generator.error.invalid_device') {
+							showErrorMessage(err);
+						}
+						found = false;
+						return;
 					}
-					found = false;
-					return;
-				}
-				const dataKey = JSON.stringify(deviceState.data);
-				window.selected_devices = [dataKey];
-				window.found_devices = {};
-				window.found_devices[dataKey] = deviceState;
-				var $foundElems = $view.find('.foundAnimation');
-				$foundElems.show();
-				setTimeout(function () {
-					$foundElems.addClass('fadeOut');
-					setTimeout(nextView, 400);
-				}, 500);
-			});
-		}
+					const dataKey = JSON.stringify(deviceState.data);
+					window.selected_devices = [dataKey];
+					window.found_devices = {};
+					window.found_devices[dataKey] = deviceState;
+					var $foundElems = $view.find('.foundAnimation');
+					$foundElems.show();
+					setTimeout(function () {
+						$foundElems.addClass('fadeOut');
+						setTimeout(nextView, 400);
+					}, 500);
+				});
+			}
+		});
 	});
 </script>
 
