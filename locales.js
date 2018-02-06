@@ -88,6 +88,7 @@ module.exports = {
 				invalid_device_data: 'The device that was created is invalid. Please remove it and try pairing it again.',
 				data_no_object: 'Data must be an object!',
 				pairdevice_invalid_data: 'New pairing device data is invalid, changes are reverted.',
+				invalid_send_data: 'Invalid data send request. Please contact the developer.',
 			},
 		}
 	},
