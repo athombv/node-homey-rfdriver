@@ -3,7 +3,7 @@
 module.exports = {
 	generic: {
 		imitate: {
-			version: '1.0.1',
+			version: '1.0.2',
 			template: './generic/imitate.html',
 			options: {
 				navigation: {
@@ -201,7 +201,7 @@ module.exports = {
 			},
 		},
 		program: {
-			version: '1.0.1',
+			version: '1.0.2',
 			template: './generic/program.html',
 			options: {
 				navigation: {
@@ -343,13 +343,13 @@ module.exports = {
 		},
 		test_switch: {
 			extends: 'test',
-			version: '1.0.0',
+			version: '1.1.0',
 			template: './generic/test_switch.html',
 		},
 	},
 	ir: {
 		model_select: {
-			version: '0.1.0',
+			version: '0.1.1',
 			template: './ir/model_select.html',
 			options: {
 				navigation: {
@@ -401,12 +401,12 @@ module.exports = {
 			},
 		},
 		dipswitch: {
-			version: '1.0.0',
+			version: '1.0.2',
 			template: './433/dipswitch.html',
 			options: {
 				navigation: {
 					prev: true,
-					next: true,
+					next: false,
 				},
 			},
 			locales: {
@@ -414,11 +414,14 @@ module.exports = {
 					generator: {
 						pair: {
 							dipswitch: {
+								programbutton: {
+									default: 'Program',
+								},
 								title: {
 									default: 'Configure your device dipswitches',
 								},
 								body: {
-									default: 'Click on the dipswitches above to put them in the same arrangement as those of your device, then click next.',
+									default: 'Click on the dipswitches above to put them in the same arrangement as those of your device, then click program.',
 								},
 							},
 						},
@@ -428,11 +431,14 @@ module.exports = {
 					generator: {
 						pair: {
 							dipswitch: {
+								programbutton: {
+									default: 'Programmeer',
+								},
 								title: {
 									default: 'Stel de dipswitches van het apparaat in',
 								},
 								body: {
-									default: 'Klik op de bovenstaande dipswitches om ze gelijk aan de dipswitches van het apparaat in te stellen, klik daarna op volgende.',
+									default: 'Klik op de bovenstaande dipswitches om ze gelijk aan de dipswitches van het apparaat in te stellen, klik daarna op programmeren.',
 								},
 							},
 						},

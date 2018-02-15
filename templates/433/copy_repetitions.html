@@ -1,19 +1,17 @@
 <script>
 	var options = {
 		// The id of the template. This should equal the id in your app.json.
-		id: 'imitate',
+		id: 'copy_repetitions',
 		// The title of the pair window
-		title: 'generator.pair.imitate.title.default',
+		title: 'pair.copy_repetitions.title.default',
 		// The body text
-		body: 'generator.pair.imitate.body.default',
+		body: 'pair.copy_repetitions.body.default',
 		// The width of the svg
 		svgWidth: '80vw',
 		// The height of the svg
 		svgHeight: '70vh',
 		// If the svghighlighter should start highlighting with the last received frame
 		initWithDeviceData: false,
-		// The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
-		svg: '../../../assets/RFDriver/svg/default.svg',
 	};
 </script>
 
@@ -23,13 +21,21 @@
 <!--START OF TEMPLATE-->
 <link href="../../../assets/RFDriver/css/styles.css" rel="stylesheet" type="text/css"/>
 
-<link href="../../../assets/RFDriver/css/svg.css" rel="stylesheet" type="text/css"/>
-
 <script src="../../../assets/RFDriver/js/base.js" type="text/javascript"></script>
-<script src="../../../assets/RFDriver/js/svghighlighter.js" type="text/javascript"></script>
 
 <div class="centered-container">
-	<div id="image-container"></div>
+	<div id="progress-container">
+		<div class="on"><span>On</span>
+			<div class="progress-bar">
+				<div></div>
+			</div>
+		</div>
+		<div class="off"><span>Off</span>
+			<div class="progress-bar">
+				<div></div>
+			</div>
+		</div>
+	</div>
 	<div id="body"><span class="content"></span></div>
 	<div class="foundAnimation" id="foundBackground" style="display:none;"></div>
 	<i class="fa fa-check-circle foundAnimation" id="found" style="display:none;" aria-hidden="true"></i>
@@ -42,45 +48,65 @@
 	}
 	var $body = $view.find('#body');
 	$body.find('.content').html(__(options.body));
-	var $imageContainer = $view.find('#image-container');
-	$imageContainer.css('width', options.svgWidth).css('height', options.svgHeight);
 
-	parseSvg(options.svg, function (svg) {
-		$imageContainer.html(svg);
-		$imageContainer.highlight();
+	var $foundElems = $view.find('.foundAnimation');
+	var $progressContainer = $view.find('#progress-container');
+	var $onBar = $progressContainer.find('.on .progress-bar > div');
+	var $offBar = $progressContainer.find('.off .progress-bar > div');
+
+	Homey.emit('clear_repetitions', function (err, device) {
+		setProgress(device);
 	});
 
-	var found = false;
-	Homey.emit('reset_device', null, function () {
-		Homey.on('frame', function (data) {
-			console.log('Received frame', data);
-			if (!found) {
-				found = true;
-				Homey.emit('set_device', { data: data }, function (err, deviceState) {
-					if (err) {
-						if ((err.message || err) !== '433_generator.error.invalid_device') {
-							showErrorMessage(err);
-						}
-						found = false;
-						return;
-					}
-					const dataKey = JSON.stringify(deviceState.data);
-					window.selected_devices = [dataKey];
-					window.found_devices = {};
-					window.found_devices[dataKey] = deviceState;
-					var $foundElems = $view.find('.foundAnimation');
-					$foundElems.show();
-					setTimeout(function () {
-						$foundElems.addClass('fadeOut');
-						setTimeout(nextView, 400);
-					}, 500);
-				});
-			}
-		});
-	});
+	Homey.on('deviceDataUpdate', setProgress);
+
+	function setProgress(device) {
+		var onLength = Object.keys(device.data.tx.on).length;
+		var offLength = Object.keys(device.data.tx.off).length;
+		if (device && device.data && device.data.tx) {
+			$onBar.css('width', (onLength * 25) + '%');
+			$offBar.css('width', (offLength * 25) + '%');
+		}
+		if (onLength >= 4 && offLength >= 4) {
+			const dataKey = JSON.stringify(device.data);
+			window.selected_devices = [dataKey];
+			window.found_devices = {};
+			window.found_devices[dataKey] = device;
+			$foundElems.show();
+			setTimeout(function () {
+				$foundElems.addClass('fadeOut');
+				setTimeout(nextView, 400);
+			}, 500);
+		}
+	}
 </script>
 
 <style>
+	.on, .off {
+		height: 1.1em;
+		padding: 1em;
+		width: 55vw;
+		width: calc(45vw + 5em);
+	}
+
+	.on > span, .off > span {
+		float: left;
+	}
+
+	.progress-bar {
+		width: 45vw;
+		margin-left: 2em;
+		border: 1px solid black;
+		height: 1em;
+		float: right;
+	}
+
+	.progress-bar > div {
+		height: 100%;
+		background: black;
+		width: 0;
+	}
+
 	#found {
 		z-index: 2;
 		position: absolute;

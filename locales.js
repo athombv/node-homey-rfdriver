@@ -84,7 +84,7 @@ module.exports = {
 				device_exists: 'This device is already paired with Homey.',
 				no_device: 'No device set to pair. Please close the pairing wizard and try again.',
 				no_settings: 'No settings object. Please try again.',
-				invalid_device: 'The device that was created is invalid. Please remove it and try pairing it again.',
+				invalid_device: 'Could not connect to the microcontroller. Please try restarting Homey by pulling the plug of Homey.',
 				invalid_device_data: 'The device that was created is invalid. Please remove it and try pairing it again.',
 				data_no_object: 'Data must be an object!',
 				pairdevice_invalid_data: 'New pairing device data is invalid, changes are reverted.',
@@ -175,7 +175,8 @@ module.exports = {
 				device_exists: 'Apparaat is al gekoppeld met Homey.',
 				no_device: 'Er is geen apparaat ingesteld. Sluit de pairing wizard en probeer opnieuw.',
 				no_settings: 'Geen instelling object. Probeer aub opnieuw.',
-				invalid_device: 'Het apparaat dat is aangemaakt is incorrect. Verwijder dit apparaat en probeer opnieuw.',
+				invalid_device: 'Kon geen verbinding maken met de microcontroller. Start Homey aub. opnieuw op door de stekker uit Homey te halen.',
+				invalid_device_data: 'Het apparaat dat is aangemaakt is incorrect. Verwijder dit apparaat en probeer opnieuw.',
 			},
 		}
 	}
