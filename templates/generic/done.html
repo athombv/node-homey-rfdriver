@@ -16,6 +16,12 @@
 <script type="text/javascript">
 	setTimeout(function () {
 		Homey.emit('done', function (err, deviceObj) {
+			if (err) {
+				return showErrorMessage(err, function () {
+					Homey.done();
+				});
+			}
+
 			var virtualDeviceClass;
 			$('.deviceclasses-list input:checked').each(function () {
 				if ($(this).attr('name').indexOf('"id":"' + deviceObj.data.id + '"') !== -1) {

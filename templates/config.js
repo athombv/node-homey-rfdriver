@@ -127,7 +127,7 @@ module.exports = {
 			},
 		},
 		done: {
-			version: '1.0.1',
+			version: '1.0.2',
 			template: './generic/done.html',
 			locales: {
 				en: {

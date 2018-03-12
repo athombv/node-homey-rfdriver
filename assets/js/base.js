@@ -39,6 +39,39 @@ function parseSvg(svg, callback) {
 		return callback(e);
 	}
 }
-function showErrorMessage(err){
-	Homey.alert(err.message && err.message.indexOf(' ') === -1 && __(err.message) !== err.message ? __(err.message) : err.message || JSON.stringify(err));
+var alertQueue = [];
+function showErrorMessage(err, callback) {
+	function alert() {
+		if (!alertQueue.length) return;
+		Homey.alert(
+			alertQueue[0].message,
+			undefined,
+			function () {
+				alertQueue[0].callbacks.forEach(function (cb) {
+					cb();
+				});
+				alertQueue.shift();
+				alert();
+			}
+		);
+	}
+
+	var message = err.message && err.message.indexOf(' ') === -1 && __(err.message) !== err.message ?
+		__(err.message) :
+		err.message || JSON.stringify(err)
+
+	if (alertQueue.length === 0) {
+		alertQueue.push({ message: message, callbacks: typeof callback === 'function' ? [callback] : [] });
+		alert();
+	} else {
+		var alert = alertQueue.filter(function (item) {
+			item.message === message;
+		});
+		if (!alert || !alert.length) {
+			alertQueue.push({ message: message, callbacks: typeof callback === 'function' ? [callback] : [] });
+		}
+		if (typeof callback === 'function') {
+			alert[0].callbacks.push(callback);
+		}
+	}
 }
