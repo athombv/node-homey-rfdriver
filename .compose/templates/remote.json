@@ -1,0 +1,28 @@
+{
+    "class": "other",
+    "pair": [
+        {
+            "$template": "rf.imitate",
+            "id": "rf.imitate",
+            "options": {
+                "title": "rf.pair.imitate.title.remote",
+                "body": "rf.pair.imitate.body.remote"
+            },
+            "navigation": {
+                "next": "rf.test_remote"
+            }
+        },
+        {
+            "$template": "rf.test_remote",
+            "id": "rf.test_remote",
+            "navigation": {
+                "prev": "rf.imitate",
+                "next": "rf.done"
+            }
+        },
+        {
+            "$template": "rf.done",
+            "id": "rf.done"
+        }
+    ]
+}
