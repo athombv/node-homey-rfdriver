@@ -8,6 +8,8 @@
 		body: 'generator.pair.test.body.switch',
 		// The capability to test e.g. onoff.
 		capability: 'onoff',
+		// Toggle key (will be same as capability when left unset)
+		key: null,
 		// The width of the svg
 		svgWidth: '80vw',
 		// The height of the svg
@@ -21,9 +23,9 @@
 		// Add setting switches to test view to let the user set-up their device in the pair wizard. Can be set to false to disable
 		settings: {
 			// Settings can be set to true or an object if they should be shown. The object can contain options e.g.
-		    // rotated: {
-		    //     label: 'my.label'
-		    // }
+			// rotated: {
+			//     label: 'my.label'
+			// }
 			// Add toggle to interpret all signals upside down
 			rotated: true,
 		},
@@ -64,7 +66,25 @@
 				return;
 			}
 
-			$imageContainer.find('[onclick\\:toggle="undefined"]').each((index, elem) => $(elem).attr('onclick:toggle', options.capability));
+			var $svgElem = $imageContainer.find('> svg');
+			var attributeRegex = new RegExp('^(.*):undefined$');
+			getSvgElems($svgElem, { attributeRegex }).each(function (index, elem) {
+				$el = $(elem);
+				getAttributes(elem).forEach(function (attribute) {
+					var attrName = attributeRegex.exec(attribute.nodeName);
+					if (attrName && attrName[1]) {
+						$el.attr(attrName[1] + ':' + (options.key || options.capability), attribute.value);
+						$el.removeAttr(attribute.nodeName);
+					}
+				});
+			});
+
+			$imageContainer.find('[onclick\\:toggle="undefined"]').each(function (index, elem) {
+				$(elem).attr('onclick:toggle', options.capability);
+			});
+			$imageContainer.find('[onclick\\:toggle="undefined"]').each(function (index, elem) {
+				$(elem).attr('onclick:toggle', options.capability);
+			});
 			$imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
 			if (options.sendValueOnInit !== null) {
 				Homey.emit('capability', { id: options.capability, value: options.sendValueOnInit });
@@ -73,7 +93,6 @@
 		if (options.settings && Object.keys(options.settings).length) {
 			Homey.emit('get_settings', function (err, settings) {
 				const rotatedSetting = settings.find(setting => setting.id === 'rotated');
-				console.log('TST', options.settings, rotatedSetting, options.settings.rotated && rotatedSetting);
 				if (options.settings.rotated && rotatedSetting) {
 					$body.append(
 						$('<div>').append(

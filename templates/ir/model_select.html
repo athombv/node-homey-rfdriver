@@ -144,7 +144,7 @@
 			var done = false;
 			var onPayloadListener = function (data) {
 				if (done) return;
-				console.log('GOT FRAME', data);
+				console.log('Received frame', data);
 				if (!done && keys.indexOf(data.join('')) !== -1) {
 					done = true;
 					next(payloads[data.join('')]);
@@ -166,7 +166,7 @@
 			var done = false;
 			var onCommandListener = function (cmd) {
 				if (done) return;
-				console.log('GOT CMD', cmd);
+				console.log('Received command', cmd);
 				if (!done && cmds.indexOf(cmd) !== -1) {
 					done = true;
 					next(commands[cmd]);
@@ -174,7 +174,6 @@
 			};
 			Homey.on('command', onCommandListener);
 		} else if (opts.type === 'button') {
-			console.log('type is button', opts);
 			opts.options.forEach(function (option) {
 				const $container = $('<div>').addClass('button-container');
 				const $button = $('<button>').addClass('button');
