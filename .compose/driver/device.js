@@ -16,6 +16,7 @@ module.exports = RFDevice => class /*<DRIVER_ID>*/Device extends RFDevice {
     }
 
     // If your driver handles raw payload requests instead of commands you need to implement the payloadToData function below
+    // This function is "static" which means you cannot use 'this' inside this function!
     // static payloadToData(payload) {
     //     // Example implementation
     //     if (payload.length === 15) {

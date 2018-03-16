@@ -2,6 +2,5 @@
     "css/styles.css",
     "js/base.js",
     "js/svghighlighter.js",
-    "svg/remote.svg",
-    "svg/socket.svg"
+    "svg"
 ]
