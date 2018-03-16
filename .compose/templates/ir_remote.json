@@ -1,0 +1,9 @@
+{
+    "$extends": "remote",
+    "pair": [
+        {
+            "$template": "rf.done",
+            "id": "rf.done"
+        }
+    ]
+}
