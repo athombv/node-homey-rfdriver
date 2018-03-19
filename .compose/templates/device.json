@@ -1,4 +1,6 @@
 {
+    "class": "other",
+    "capabilities": [],
     "pair": [
         {
             "$template": "rf.choice",
