@@ -9,12 +9,12 @@
                 "body": "rf.pair.imitate.body.remote"
             },
             "navigation": {
-                "next": "rf.test_remote"
+                "next": "rf.test"
             }
         },
         {
-            "$template": "rf.test_remote",
-            "id": "rf.test_remote",
+            "$template": "rf.test",
+            "id": "rf.test",
             "navigation": {
                 "prev": "rf.imitate",
                 "next": "rf.done"
