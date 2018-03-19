@@ -9,12 +9,12 @@
                 "body": "rf.pair.imitate.body.wall_switch"
             },
             "navigation": {
-                "next": "rf.test_remote"
+                "next": "rf.test"
             }
         },
         {
-            "$template": "rf.test_remote",
-            "id": "rf.test_remote",
+            "$template": "rf.test",
+            "id": "rf.test",
             "options": {
                 "title": "rf.pair.test.title.wall_switch",
                 "body": "rf.pair.test.body.wall_switch"

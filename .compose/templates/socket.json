@@ -37,12 +37,12 @@
             "id": "rf.test_switch",
             "navigation": {
                 "prev": "rf.imitate",
-                "next": "rf.choose_slave"
+                "next": "choose_slave"
             }
         },
         {
-            "$template": "rf.choose_slave",
-            "id": "rf.choose_slave",
+            "template": "choose_slave",
+            "id": "choose_slave",
             "navigation": {
                 "prev": "rf.test_switch",
                 "next": "rf.done"
@@ -50,6 +50,7 @@
         },
         {
             "$template": "rf.program",
+            "id": "rf.program",
             "navigation": {
                 "prev": "rf.choice"
             }
@@ -62,12 +63,12 @@
             },
             "navigation": {
                 "prev": "rf.program",
-                "next": "rf.choose_slave.2"
+                "next": "choose_slave.2"
             }
         },
         {
-            "$template": "rf.choose_slave",
-            "id": "rf.choose_slave.2",
+            "template": "choose_slave",
+            "id": "choose_slave.2",
             "navigation": {
                 "prev": "rf.test_switch.2",
                 "next": "rf.done"
