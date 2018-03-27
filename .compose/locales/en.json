@@ -1,12 +1,12 @@
 {
     "settings": {
         "groups": {
-            "general": "Algemene Instellingen"
+            "general": "General Settings"
         },
         "rotated": {
-            "0": "Nee",
-            "180": "Ja",
-            "label": "Inverteer signaal"
+            "0": "No",
+            "180": "Yes",
+            "label": "Invert signal"
         }
     },
     "generic": {
