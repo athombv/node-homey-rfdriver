@@ -12,111 +12,112 @@
 
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
-    getViewOptionsWithDefaults({
-        // The title of the pair window
-        title: 'rf.pair.test.title.blinds',
-        // The body text
-        body: 'rf.pair.test.body.blinds',
-        // The capability to test e.g. onoff.
-        capability: 'onoff',
-        // The width of the svg
-        svgWidth: '80vw',
-        // The height of the svg
-        svgHeight: '70vh',
-        // If the svghighlighter should start highlighting with the last received frame
-        initWithDeviceData: false,
-        // The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
-        svg: './assets/svg/blinds.svg',
-        // If a signal should be send when this view is opened change this from null to the value which corresponds to the capability option above.
-        sendValueOnInit: null,
-        // Add setting switches to test view to let the user set-up their device in the pair wizard. Can be set to false to disable
-        settings: {
-            // Settings can be set to true or an object if they should be shown. The object can contain options e.g.
-            // rotated: {
-            //     label: 'my.label'
-            // }
-            // Add toggle to interpret all signals upside down
-            rotated: false,
-            chooseDeviceCapabilities: true,
-        },
-    }, function (options) {
-    var $view = $('[data-id="' + options.viewId + '"]');
-    if (!$view.length) {
-        $('#body').html('Could not locate view window for id ' + options.viewId + '. Please make sure the id is configured properly in your pair template settings.');
-    }
-    var $body = $view.find('#body');
-    $body.find('.content').html(__(options.body));
-    var $imageContainer = $view.find('#image-container');
-    $imageContainer.css('width', options.svgWidth).css('height', options.svgHeight);
+	getViewOptionsWithDefaults({
+		// The title of the pair window
+		title: 'rf.pair.test.title.blinds',
+		// The body text
+		body: 'rf.pair.test.body.blinds',
+		// The capability to test e.g. onoff.
+		capability: 'onoff',
+		// The width of the svg
+		svgWidth: '80vw',
+		// The height of the svg
+		svgHeight: '70vh',
+		// If the svghighlighter should start highlighting with the last received frame
+		initWithDeviceData: false,
+		// The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
+		svg: './assets/svg/blinds.svg',
+		// If a signal should be send when this view is opened change this from null to the value which corresponds to the capability option above.
+		sendValueOnInit: null,
+		// Add setting switches to test view to let the user set-up their device in the pair wizard. Can be set to false to disable
+		settings: {
+			// Settings can be set to true or an object if they should be shown. The object can contain options e.g.
+			// rotated: {
+			//     label: 'my.label'
+			// }
+			// Add toggle to interpret all signals upside down
+			rotated: false,
+			chooseDeviceCapabilities: true,
+		},
+	}, function (err, options) {
+		if (err) return showErrorMessage(err);
+		var $view = $('[data-id="' + options.viewId + '"]');
+		if (!$view.length) {
+			$('#body').html('Could not locate view window for id ' + options.viewId + '. Please make sure the id is configured properly in your pair template settings.');
+		}
+		var $body = $view.find('#body');
+		$body.find('.content').html(__(options.body));
+		var $imageContainer = $view.find('#image-container');
+		$imageContainer.css('width', options.svgWidth).css('height', options.svgHeight);
 
-    parseSvg(options.svg, function (svg) {
-        $imageContainer.html(svg);
-        Homey.emit('test', function (err, deviceState) {
-            if (err) {
-                showErrorMessage(err);
-                return;
-            }
+		parseSvg(options.svg, function (svg) {
+			$imageContainer.html(svg);
+			Homey.emit('test', function (err, deviceState) {
+				if (err) {
+					showErrorMessage(err);
+					return;
+				}
 
-            $imageContainer.find('[onclick\\:toggle="undefined"]').each((index, elem) => $(elem).attr('onclick:toggle', options.capability));
-            $imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
-            if (options.sendValueOnInit !== null) {
-                Homey.emit('capability', { id: options.capability, value: options.sendValueOnInit });
-            }
-        });
-        if (options.settings && Object.keys(options.settings).length) {
-            Homey.emit('get_settings', function (err, settings) {
-                const rotatedSetting = settings.find(setting => setting.id === 'rotated');
-                if (options.settings.rotated && rotatedSetting) {
-                    $body.append(
-                        $('<div>').append(
-                            $('<input id="invert-checkbox" type="checkbox" ' + (rotatedSetting.value === '180' ? 'checked="checked"' : '') + ' style="position: relative; bottom: 1px; vertical-align: middle;">')
-                                .on('change', function () {
-                                    var newSettings = { rotated: this.checked ? '180' : '0' };
-                                    Homey.emit('set_setting', newSettings, function () {
-                                        Homey.highlight(newSettings);
-                                    })
-                                }),
-                            $('<label for="invert-checkbox" style="padding: 0 1em;">')
-                                .html(options.settings.rotated.label ? __(options.settings.rotated.label) : __(rotatedSetting.label))
-                        )
-                    );
-                }
-            });
-        }
-    });
+				$imageContainer.find('[onclick\\:toggle="undefined"]').each((index, elem) => $(elem).attr('onclick:toggle', options.capability));
+				$imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
+				if (options.sendValueOnInit !== null) {
+					Homey.emit('capability', { id: options.capability, value: options.sendValueOnInit });
+				}
+			});
+			if (options.settings && Object.keys(options.settings).length) {
+				Homey.emit('get_settings', function (err, settings) {
+					const rotatedSetting = settings.find(setting => setting.id === 'rotated');
+					if (options.settings.rotated && rotatedSetting) {
+						$body.append(
+							$('<div>').append(
+								$('<input id="invert-checkbox" type="checkbox" ' + (rotatedSetting.value === '180' ? 'checked="checked"' : '') + ' style="position: relative; bottom: 1px; vertical-align: middle;">')
+									.on('change', function () {
+										var newSettings = { rotated: this.checked ? '180' : '0' };
+										Homey.emit('set_setting', newSettings, function () {
+											Homey.highlight(newSettings);
+										})
+									}),
+								$('<label for="invert-checkbox" style="padding: 0 1em;">')
+									.html(options.settings.rotated.label ? __(options.settings.rotated.label) : __(rotatedSetting.label))
+							)
+						);
+					}
+				});
+			}
+		});
 
-    Homey.emit('get_capabilities', function (err, capabilities) {
-        $body.append(
-            $('<span style="display:block;">').html(__('pair.test.choose_capabilities')),
-            $('<div style="margin-bottom: 1em;">').append(
-                $('<input id="all" type="radio" name="capabilities" checked="checked" style="position: relative; bottom: 1px; vertical-align: middle;">')
-                    .on('change', function () {
-                        Homey.emit('set_capabilities', capabilities, function () {
-                            Homey.highlight({ capabilities: capabilities.join(',') });
-                        })
-                    }),
-                $('<label for="all" style="padding: 0 1em;">')
-                    .html(__('pair.test.capabilities.all')),
-                $('<input id="windowcoverings_state" type="radio" name="capabilities" style="position: relative; bottom: 1px; vertical-align: middle;">')
-                    .on('change', function () {
-                        newCapabilities = capabilities.filter(cap => cap.indexOf('windowcoverings_tilt') !== 0);
-                        Homey.emit('set_capabilities', newCapabilities, function () {
-                            Homey.highlight({ capabilities: newCapabilities.join(','), tilt: null });
-                        })
-                    }),
-                $('<label for="windowcoverings_state" style="padding: 0 1em;">')
-                    .html(__('pair.test.capabilities.windowcoverings_state')),
-                $('<input id="windowcoverings_tilt" type="radio" name="capabilities" style="position: relative; bottom: 1px; vertical-align: middle;">')
-                    .on('change', function () {
-                        newCapabilities = capabilities.filter(cap => cap !== 'windowcoverings_state');
-                        Homey.emit('set_capabilities', newCapabilities, function () {
-                            Homey.highlight({ capabilities: newCapabilities.join(','), windowcoverings_state: 'down', direction: 'down' });
-                        })
-                    }),
-                $('<label for="windowcoverings_tilt" style="padding: 0 1em;">')
-                    .html(__('pair.test.capabilities.windowcoverings_tilt'))
-            )
-        )
-    })
-    });
+		Homey.emit('get_capabilities', function (err, capabilities) {
+			$body.append(
+				$('<span style="display:block;">').html(__('pair.test.choose_capabilities')),
+				$('<div style="margin-bottom: 1em;">').append(
+					$('<input id="all" type="radio" name="capabilities" checked="checked" style="position: relative; bottom: 1px; vertical-align: middle;">')
+						.on('change', function () {
+							Homey.emit('set_capabilities', capabilities, function () {
+								Homey.highlight({ capabilities: capabilities.join(',') });
+							})
+						}),
+					$('<label for="all" style="padding: 0 1em;">')
+						.html(__('pair.test.capabilities.all')),
+					$('<input id="windowcoverings_state" type="radio" name="capabilities" style="position: relative; bottom: 1px; vertical-align: middle;">')
+						.on('change', function () {
+							newCapabilities = capabilities.filter(cap => cap.indexOf('windowcoverings_tilt') !== 0);
+							Homey.emit('set_capabilities', newCapabilities, function () {
+								Homey.highlight({ capabilities: newCapabilities.join(','), tilt: null });
+							})
+						}),
+					$('<label for="windowcoverings_state" style="padding: 0 1em;">')
+						.html(__('pair.test.capabilities.windowcoverings_state')),
+					$('<input id="windowcoverings_tilt" type="radio" name="capabilities" style="position: relative; bottom: 1px; vertical-align: middle;">')
+						.on('change', function () {
+							newCapabilities = capabilities.filter(cap => cap !== 'windowcoverings_state');
+							Homey.emit('set_capabilities', newCapabilities, function () {
+								Homey.highlight({ capabilities: newCapabilities.join(','), windowcoverings_state: 'down', direction: 'down' });
+							})
+						}),
+					$('<label for="windowcoverings_tilt" style="padding: 0 1em;">')
+						.html(__('pair.test.capabilities.windowcoverings_tilt'))
+				)
+			)
+		})
+	});
 </script>

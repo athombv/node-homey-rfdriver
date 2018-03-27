@@ -6,35 +6,36 @@
 
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script type="text/javascript">
-    getViewOptionsWithDefaults({
-        // The title of the pair window
-        title: 'rf.pair.done.title.default',
-    }, function (options) {
-        setTimeout(function () {
-            Homey.emit('done', function (err, deviceObj) {
-                if (err) {
-                    return showErrorMessage(err, function () {
-                        Homey.done();
-                    });
-                }
+	getViewOptionsWithDefaults({
+		// The title of the pair window
+		title: 'rf.pair.done.title.default',
+	}, function (err, options) {
+		if (err) return showErrorMessage(err);
+		setTimeout(function () {
+			Homey.emit('done', function (err, deviceObj) {
+				if (err) {
+					return showErrorMessage(err, function () {
+						Homey.done();
+					});
+				}
 
-                var virtualDeviceClass;
-                $('.deviceclasses-list input:checked').each(function () {
-                    if ($(this).attr('name').indexOf('"id":"' + deviceObj.data.id + '"') !== -1) {
-                        virtualDeviceClass = $(this);
-                    }
-                });
+				var virtualDeviceClass;
+				$('.deviceclasses-list input:checked').each(function () {
+					if ($(this).attr('name').indexOf('"id":"' + deviceObj.data.id + '"') !== -1) {
+						virtualDeviceClass = $(this);
+					}
+				});
 
-                if (virtualDeviceClass) {
-                    deviceObj.virtualClass = $(virtualDeviceClass).val();
-                    deviceObj.virtualCapabilities = $(virtualDeviceClass).data('capabilities').split(',');
-                }
+				if (virtualDeviceClass) {
+					deviceObj.virtualClass = $(virtualDeviceClass).val();
+					deviceObj.virtualCapabilities = $(virtualDeviceClass).data('capabilities').split(',');
+				}
 
-                Homey.addDevice(deviceObj, function () {
-                    Homey.done();
-                });
-            });
-        }, 1000);
-    });
+				Homey.addDevice(deviceObj, function () {
+					Homey.done();
+				});
+			});
+		}, 1000);
+	});
 </script>
 

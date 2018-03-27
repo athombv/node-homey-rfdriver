@@ -39,7 +39,8 @@
 			// Add toggle to interpret all signals upside down
 			rotated: true,
 		},
-	}, function (options) {
+	}, function (err, options) {
+		if (err) return showErrorMessage(err);
 		var $view = $('[data-id="' + options.viewId + '"]');
 		if (!$view.length) {
 			$('#body').html('Could not locate view window for id ' + options.viewId + '. Please make sure the id is configured properly in your pair template settings.');
