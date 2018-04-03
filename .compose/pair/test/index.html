@@ -12,6 +12,8 @@
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
+		// The assets path of this template
+		assetsPath: '{{assets}}',
 		// The title of the pair window
 		title: 'rf.pair.test.title.default',
 		// The body text
@@ -25,7 +27,7 @@
 		// If the svghighlighter should start highlighting with the last received frame
 		initWithDeviceData: false,
 		// The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
-		svg: '{{assets}}/svg/default.svg',
+		svg: 'default',
 		// If a signal should be send when this view is opened change this from null to the value which corresponds to the capability option above.
 		sendValueOnInit: null,
 		// Add setting switches to test view to let the user set-up their device in the pair wizard. Can be set to false to disable

@@ -13,6 +13,8 @@
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
+		// The assets path of this template
+		assetsPath: '{{assets}}',
 		// The title of the pair window
 		title: 'rf.pair.test.title.blinds',
 		// The body text
@@ -24,9 +26,9 @@
 		// The height of the svg
 		svgHeight: '70vh',
 		// If the svghighlighter should start highlighting with the last received frame
-		initWithDeviceData: false,
+		initWithDeviceData: true,
 		// The svg that should be displayed to the user. This could be an svg string e.g. '<svg><path>...</path></svg>' or an url
-		svg: './assets/svg/blinds.svg',
+		svg: 'blinds',
 		// If a signal should be send when this view is opened change this from null to the value which corresponds to the capability option above.
 		sendValueOnInit: null,
 		// Add setting switches to test view to let the user set-up their device in the pair wizard. Can be set to false to disable
@@ -63,13 +65,11 @@
 				$svgElem.find('*').add(svg).each(function (index, elem) {
 					if (!elem || typeof elem.getAttributeNames !== 'function') return;
 					var $el = $(this);
-					elem.getAttributeNames().forEach(function (attributeName) {
-						const attributeValue = elem.getAttribute(attributeName);
-						var attrName = attributeRegex.exec(attributeName);
+					elem.getAttributeNames().forEach(function (attribute) {
+						var attrName = attributeRegex.exec(attribute.nodeName);
 						if (attrName && attrName[1]) {
-							console.log('check elem', elem);
-							$el.attr(attrName[1] + ':' + (options.key || options.capability), attributeValue);
-							$el.removeAttr(attributeName);
+							$el.attr(attrName[1] + ':' + (options.key || options.capability), attribute.value);
+							$el.removeAttr(attribute.nodeName);
 						}
 					});
 				});

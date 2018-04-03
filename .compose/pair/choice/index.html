@@ -11,6 +11,8 @@
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
+		// The assets path of this template
+		assetsPath: '{{assets}}',
 		// The title of the pair window
 		title: 'rf.pair.choice.title.default',
 		// The body text
@@ -27,7 +29,7 @@
 				// The view id that should be loaded when the button is clicked
 				view: 'myNextView',
 				// The svg that is placed above the button
-				svg: '{{assets}}/svg/default.svg',
+				svg: 'default',
 			},
 			{
 				// The label of the button under this choice
@@ -35,7 +37,7 @@
 				// The view id that should be loaded when the button is clicked
 				view: 'myOtherView',
 				// The svg that is placed above the button
-				svg: '{{assets}}/svg/remote.svg',
+				svg: 'remote',
 			},
 		],
 	}, function (err, options) {
