@@ -12,8 +12,6 @@
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
-		// The assets path of this template
-		assetsPath: '{{assets}}',
 		// The title of the pair window
 		title: 'rf.pair.test.title.default',
 		// The body text
@@ -65,21 +63,20 @@
 				$svgElem.find('*').add(svg).each(function (index, elem) {
 					if (!elem || typeof elem.getAttributeNames !== 'function') return;
 					var $el = $(this);
-					elem.getAttributeNames().forEach(function (attribute) {
-						var attrName = attributeRegex.exec(attribute.nodeName);
+					elem.getAttributeNames().forEach(function (attributeName) {
+						const attributeValue = elem.getAttribute(attributeName);
+						var attrName = attributeRegex.exec(attributeName);
 						if (attrName && attrName[1]) {
-							$el.attr(attrName[1] + ':' + (options.key || options.capability), attribute.value);
-							$el.removeAttr(attribute.nodeName);
+							console.log('check elem', elem);
+							$el.attr(attrName[1] + ':' + (options.key || options.capability), attributeValue);
+							$el.removeAttr(attributeName);
 						}
 					});
 				});
+				$svgElem.find('[onclick\\:toggle="undefined"]').each(function (index, elem) {
+					$(elem).attr('onclick:toggle', options.capability);
+				});
 
-				$svgElem.find('[onclick\\:toggle="undefined"]').each(function (index, elem) {
-					$(elem).attr('onclick:toggle', options.capability);
-				});
-				$svgElem.find('[onclick\\:toggle="undefined"]').each(function (index, elem) {
-					$(elem).attr('onclick:toggle', options.capability);
-				});
 				$imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
 				if (options.sendValueOnInit !== null) {
 					Homey.emit('capability', { id: options.capability, value: options.sendValueOnInit });

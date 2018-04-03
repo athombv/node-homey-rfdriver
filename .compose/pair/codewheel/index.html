@@ -24,7 +24,7 @@
 		// The body text
 		body: 'rf.pair.codewheel.body.default',
 		// The label of the button that the user can click start sending the pair signal
-		buttonLabel: 'rf.pair.codewheel.programbutton.default',
+		buttonLabel: 'rf.pair.dipswitch.programbutton.default',
 		// A list containing 1 or more codewheel configs
 		codewheelList: [
 			{
@@ -46,6 +46,22 @@
 		var $programButton = $view.find('#program_button');
 		var $codewheelContainer = $view.find('#codewheel-container');
 		var codewheelElems = [];
+
+		function onCodewheelChange() {
+			Homey.emit('set_device_codewheels', codewheelElems.map(function (elem) {
+				return elem.getValue();
+			}));
+		}
+
+		if ($codewheelContainer.is(':empty')) {
+			options.codewheelList.map(function (codewheelOptions) {
+				var codewheelElem = $('<div>')
+					.addClass('codewheel')
+					.codewheel(Object.assign({ onChange: onCodewheelChange }, codewheelOptions));
+				codewheelElems.push(codewheelElem);
+				$codewheelContainer.append(codewheelElem);
+			});
+		}
 
 		$programButton.html(__(options.buttonLabel));
 		$programButton.on('click', function (e) {
@@ -72,23 +88,6 @@
 			e.stopPropagation();
 			return false;
 		});
-
-
-		function onCodewheelChange() {
-			Homey.emit('set_device_codewheels', codewheelElems.map(function (elem) {
-				return elem.getValue();
-			}));
-		}
-
-		if ($codewheelContainer.is(':empty')) {
-			options.codewheelList.map(function (codewheelOptions) {
-				var codewheelElem = $('<div>')
-					.addClass('codewheel')
-					.codewheel(Object.assign({ onChange: onCodewheelChange }, codewheelOptions));
-				codewheelElems.push(codewheelElem);
-				$codewheelContainer.append(codewheelElem);
-			});
-		}
 
 		Homey.emit('get_device', function (err, deviceState) {
 			if (deviceState && deviceState.data && deviceState.data.codewheelIndexes) {

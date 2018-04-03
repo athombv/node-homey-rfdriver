@@ -11,8 +11,6 @@
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
-		// The assets path of this template
-		assetsPath: '{{assets}}',
 		// The title of the pair window
 		title: 'rf.pair.choice.title.default',
 		// The body text
@@ -56,7 +54,7 @@
 			options.choices.forEach(function (choice) {
 				$choiceContainer.append(
 					$('<div>').addClass('button-container')
-						.html(choice.svgElement)
+						.html(choice.svgData)
 						.append(
 							$('<button>')
 								.addClass('button')
@@ -69,15 +67,16 @@
 
 		var svgLoadCount = 0;
 		options.choices.forEach(function (choice) {
-			if (!choice.svgElement) {
-				parseSvg(choice.svg, function (svgElement) {
-					choice.svgElement = svgElement;
+			if (!choice.svgData) {
+				parseSvg(choice.svg, function (svg) {
+					choice.svgData = svg;
 					if (++svgLoadCount === options.choices.length) {
 						showChoices();
 					}
 				});
 			} else if (++svgLoadCount === options.choices.length) {
 				showChoices();
+
 			}
 		});
 	});
