@@ -7,15 +7,24 @@
 <div class="centered-container">
 	<div id="codewheel-container"></div>
 	<div id="body"><span class="content"></span></div>
+	<div class="programAnimation" id="sendProgramSignalBackground" style="display:none;"></div>
+	<i class="loading fa fa-cog fa-spin programAnimation" id="sendProgramSignalSpinner" style="display:none;"></i>
+	<div id="button-container">
+		<button id="program_button" class="button"></button>
+	</div>
 </div>
 
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
+		// The assets path of this template
+		assetsPath: '{{assets}}',
 		// The title of the pair window
 		title: 'rf.pair.codewheel.title.default',
 		// The body text
 		body: 'rf.pair.codewheel.body.default',
+		// The label of the button that the user can click start sending the pair signal
+		buttonLabel: 'rf.pair.codewheel.programbutton.default',
 		// A list containing 1 or more codewheel configs
 		codewheelList: [
 			{
@@ -33,8 +42,37 @@
 		}
 		var $body = $view.find('#body');
 		$body.find('.content').html(__(options.body));
+		var $programElems = $view.find('.programAnimation');
+		var $programButton = $view.find('#program_button');
 		var $codewheelContainer = $view.find('#codewheel-container');
 		var codewheelElems = [];
+
+		$programButton.html(__(options.buttonLabel));
+		$programButton.on('click', function (e) {
+			$programElems.show();
+			Homey.emit('assert_device', function (err, deviceState) {
+				if (err) {
+					$programElems.hide();
+					showErrorMessage(err);
+					return;
+				}
+				Homey.emit('program_send', function (err) {
+					$programElems.hide();
+					if (err) {
+						showErrorMessage(err);
+						return;
+					}
+					const dataKey = JSON.stringify(deviceState.data);
+					window.selected_devices = [dataKey];
+					window.found_devices = {};
+					window.found_devices[dataKey] = deviceState;
+					nextView();
+				});
+			});
+			e.stopPropagation();
+			return false;
+		});
+
 
 		function onCodewheelChange() {
 			Homey.emit('set_device_codewheels', codewheelElems.map(function (elem) {
@@ -49,35 +87,6 @@
 					.codewheel(Object.assign({ onChange: onCodewheelChange }, codewheelOptions));
 				codewheelElems.push(codewheelElem);
 				$codewheelContainer.append(codewheelElem);
-			});
-		}
-
-		if (!$view.find('.view-navigation-next.dummy').length) {
-			var $nextButton = $view.find('.view-navigation-next');
-			var $nextButtonDummy = $nextButton.clone().addClass('dummy');
-			$nextButton.hide();
-			$nextButton.parent().append($nextButtonDummy);
-
-			$nextButtonDummy.on('click', function (e) {
-				Homey.emit('assert_device', function (err, deviceState) {
-					if (err) {
-						showErrorMessage(err);
-						return;
-					}
-					Homey.emit('program_send', function (err) {
-						if (err) {
-							showErrorMessage(err);
-							return;
-						}
-						const dataKey = JSON.stringify(deviceState.data);
-						window.selected_devices = [dataKey];
-						window.found_devices = {};
-						window.found_devices[dataKey] = deviceState;
-						$nextButtonDummy.siblings('.view-navigation-next').click();
-					});
-				});
-				e.stopPropagation();
-				return false;
 			});
 		}
 

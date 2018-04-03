@@ -90,6 +90,9 @@
         }
     },
     "codewheel": {
+        "programbutton": {
+            "default": "Program"
+        },
         "title": {
             "default": "Configure your device code"
         },
