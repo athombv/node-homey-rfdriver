@@ -54,7 +54,24 @@
 				}
 
 				if (options.capability) {
-					$imageContainer.find('[onclick\\:toggle="undefined"]').each((index, elem) => $(elem).attr('onclick:toggle', options.capability));
+					var $svgElem = $imageContainer.find('> svg');
+					var attributeRegex = new RegExp('^(.*):undefined$');
+					$svgElem.find('*').add(svg).each(function (index, elem) {
+						if (!elem || typeof elem.getAttributeNames !== 'function') return;
+						var $el = $(this);
+						elem.getAttributeNames().forEach(function (attributeName) {
+							const attributeValue = elem.getAttribute(attributeName);
+							var attrName = attributeRegex.exec(attributeName);
+							if (attrName && attrName[1]) {
+								console.log('check elem', elem);
+								$el.attr(attrName[1] + ':' + (options.key || options.capability), attributeValue);
+								$el.removeAttr(attributeName);
+							}
+						});
+					});
+					$svgElem.find('[onclick\\:toggle="undefined"]').each(function (index, elem) {
+						$(elem).attr('onclick:toggle', options.capability);
+					});
 				}
 				$imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
 				if (options.capability && options.sendValueOnInit !== null) {

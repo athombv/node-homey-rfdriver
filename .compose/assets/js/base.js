@@ -1,4 +1,5 @@
 var currentViewId = Homey._currentView;
+var templateAssetsPath;
 Homey.emit('init', currentViewId);
 Homey.on('show_view', function (viewId) {
     Homey.showView(viewId);
@@ -23,8 +24,11 @@ function nextView() {
 }
 function parseSvg(svg, callback) {
     if (!svg) return svg;
-    if (!(svg.indexOf('<svg>') === -1 || svg.indexOf('</svg>') === -1)) {
+    if (svg.indexOf(/<\s*svg/) !== -1 && svg.indexOf(/<\/\s*svg/) !== -1) {
         return callback(svg);
+    }
+    if(svg.indexOf('.svg') === -1 && templateAssetsPath){
+        svg = templateAssetsPath + '/svg/' + svg + '.svg';
     }
     try {
         var request = new XMLHttpRequest();
@@ -65,7 +69,7 @@ function showErrorMessage(err, callback) {
         alert();
     } else {
         var alert = alertQueue.filter(function (item) {
-            item.message === message;
+            return item.message === message;
         });
         if (!alert || !alert.length) {
             alertQueue.push({ message: message, callbacks: typeof callback === 'function' ? [callback] : [] });
@@ -90,10 +94,11 @@ function getViewOptionsWithDefaults(defaults, callback) {
 
     Homey.getOptions(function (err, options) {
         if (err) return callback(err);
-        var options = setDefaults(options, defaults) || defaults;
+        options = setDefaults(options, defaults) || defaults;
         if(options.title) {
             Homey.setTitle(Homey.__(options.title || ''));
         }
+        templateAssetsPath = options.assetsPath;
         options.viewId = options.viewId || currentViewId;
         callback(null, options);
     });
