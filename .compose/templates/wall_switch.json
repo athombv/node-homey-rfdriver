@@ -7,9 +7,6 @@
             "options": {
                 "title": "rf.pair.imitate.title.wall_switch",
                 "body": "rf.pair.imitate.body.wall_switch"
-            },
-            "navigation": {
-                "next": "rf.test"
             }
         },
         {
