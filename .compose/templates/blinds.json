@@ -9,9 +9,6 @@
             "id": "rf.imitate",
             "options": {
                 "body": "rf.pair.imitate.body.blinds"
-            },
-            "navigation": {
-                "next": "rf.test_blinds"
             }
         },
         {
