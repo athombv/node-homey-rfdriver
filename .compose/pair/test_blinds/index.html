@@ -38,7 +38,9 @@
 			// }
 			// Add toggle to interpret all signals upside down
 			rotated: true,
-			chooseDeviceCapabilities: true,
+			chooseDeviceCapabilities: {
+				checkedIndex: 0,
+			},
 		},
 	}, function (err, options) {
 		if (err) return showErrorMessage(err);
@@ -80,7 +82,7 @@
 
 				$imageContainer.highlight(deviceState.data, options.initWithDeviceData ? Object.assign({}, deviceState.data, deviceState.lastFrame || {}) : false);
 				if (loadedCapabilities) {
-					Homey.highlight({ capabilities: loadedCapabilities.join(',') });
+					Homey.highlight(loadedCapabilities);
 				} else {
 					loadedCapabilities = false;
 				}
@@ -112,11 +114,6 @@
 		}
 
 		Homey.emit('get_capabilities', function (err, capabilities) {
-			if (loadedCapabilities === false) {
-				Homey.highlight({ capabilities: capabilities.join(',') });
-			} else {
-				loadedCapabilities = capabilities;
-			}
 			// check if capabilities are available to be toggled
 			if (
 				!(options.settings && options.settings.chooseDeviceCapabilities) ||
@@ -127,37 +124,57 @@
 				)
 			) return;
 
+			var radioOptions = [
+				{
+					id: 'all',
+					label: 'pair.test.capabilities.all',
+					onChecked: function () {
+						Homey.emit('set_capabilities', capabilities, function () {
+							loadedCapabilities = { capabilities: capabilities.join(',') };
+							if (Homey.highlight) Homey.highlight(loadedCapabilities);
+						});
+					}
+				},
+				{
+					id: 'windowcoverings_state',
+					label: 'pair.test.capabilities.windowcoverings_state',
+					onChecked: function () {
+						var newCapabilities = capabilities.filter(cap => cap.indexOf('windowcoverings_tilt') !== 0);
+						Homey.emit('set_capabilities', newCapabilities, function () {
+							loadedCapabilities = { capabilities: newCapabilities.join(','), tilt: null };
+							if (Homey.highlight) Homey.highlight(loadedCapabilities);
+						});
+					}
+				},
+				{
+					id: 'windowcoverings_tilt',
+					label: 'pair.test.capabilities.windowcoverings_tilt',
+					onChecked: function () {
+						var newCapabilities = capabilities.filter(cap => cap !== 'windowcoverings_state');
+						Homey.emit('set_capabilities', newCapabilities, function () {
+							loadedCapabilities = { capabilities: newCapabilities.join(','), windowcoverings_state: 'down', direction: 'down' };
+							if (Homey.highlight) Homey.highlight(loadedCapabilities);
+						});
+					}
+				}
+			];
+			var checkedIndex = (typeof options.settings.chooseDeviceCapabilities === 'object' ? options.settings.chooseDeviceCapabilities.checkedIndex : 0) || 0;
+			console.log(checkedIndex);
+			radioOptions[checkedIndex].onChecked();
+
+			var $radioContainer = $('<div style="margin-bottom: 1em;">');
+			radioOptions.forEach(function (option, index) {
+				$radioContainer.append(
+					$('<input id="' + option.id + '" name="capabilities" type="radio" ' + (index === checkedIndex ? 'checked="checked ' : '') + 'style="position: relative; bottom: 1px; vertical-align: middle;">')
+						.on('change', option.onChecked),
+					$('<label for="' + option.id + '" style="padding: 0 1em;">')
+						.html(__(option.label))
+				);
+			});
 			$body.append(
 				$('<span style="display:block;">').html(__('pair.test.choose_capabilities')),
-				$('<div style="margin-bottom: 1em;">').append(
-					$('<input id="all" type="radio" name="capabilities" checked="checked" style="position: relative; bottom: 1px; vertical-align: middle;">')
-						.on('change', function () {
-							Homey.emit('set_capabilities', capabilities, function () {
-								Homey.highlight({ capabilities: capabilities.join(',') });
-							})
-						}),
-					$('<label for="all" style="padding: 0 1em;">')
-						.html(__('pair.test.capabilities.all')),
-					$('<input id="windowcoverings_state" type="radio" name="capabilities" style="position: relative; bottom: 1px; vertical-align: middle;">')
-						.on('change', function () {
-							newCapabilities = capabilities.filter(cap => cap.indexOf('windowcoverings_tilt') !== 0);
-							Homey.emit('set_capabilities', newCapabilities, function () {
-								Homey.highlight({ capabilities: newCapabilities.join(','), tilt: null });
-							})
-						}),
-					$('<label for="windowcoverings_state" style="padding: 0 1em;">')
-						.html(__('pair.test.capabilities.windowcoverings_state')),
-					$('<input id="windowcoverings_tilt" type="radio" name="capabilities" style="position: relative; bottom: 1px; vertical-align: middle;">')
-						.on('change', function () {
-							newCapabilities = capabilities.filter(cap => cap !== 'windowcoverings_state');
-							Homey.emit('set_capabilities', newCapabilities, function () {
-								Homey.highlight({ capabilities: newCapabilities.join(','), windowcoverings_state: 'down', direction: 'down' });
-							})
-						}),
-					$('<label for="windowcoverings_tilt" style="padding: 0 1em;">')
-						.html(__('pair.test.capabilities.windowcoverings_tilt'))
-				)
-			)
+				$radioContainer
+			);
 		});
 	});
 </script>
