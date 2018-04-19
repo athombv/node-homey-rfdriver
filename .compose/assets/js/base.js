@@ -20,7 +20,7 @@ Homey.on('previousView', function (viewsIds) {
     }
 });
 function nextView() {
-    Homey.emit('next');
+    Homey.emit('next', null);
 }
 function parseSvg(svg, callback) {
     if (!svg) return svg;
