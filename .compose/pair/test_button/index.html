@@ -12,6 +12,21 @@
 	<div id="body"><span class="content"></span></div>
 </div>
 
+<!--Polyfill for Element.getAttributeNames-->
+<script>
+	if (Element.prototype.getAttributeNames === undefined) {
+		Element.prototype.getAttributeNames = function () {
+			var attributes = this.attributes;
+			var length = attributes.length;
+			var result = new Array(length);
+			for (var i = 0; i < length; i++) {
+				result[i] = attributes[i].name;
+			}
+			return result;
+		};
+	}
+</script>
+
 <!-- Script, default options can be overwitten by setting the pair view options in driver.compose.json -> pairOptions: { [viewId]: {...} } -->
 <script>
 	getViewOptionsWithDefaults({
