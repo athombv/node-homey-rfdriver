@@ -19,7 +19,7 @@
                     },
                     {
                         "name": "rf.pair.choice.buttons.generate.default",
-                        "view": "rf.generate",
+                        "view": "rf.program",
                         "svg": "./assets/svg/socket.svg"
                     }
                 ]
