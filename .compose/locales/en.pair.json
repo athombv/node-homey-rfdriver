@@ -61,7 +61,8 @@
         },
         "body": {
             "default": "Put your device in pairing mode, then click the 'Program' button to pair your device with Homey.",
-            "socket": "Press the program button on your socket to put it in pairing mode, then click the 'Program' button."
+            "socket": "Press the program button on your socket to put it in pairing mode, then click the 'Program' button.",
+            "doorbell": "Press the program button on your doorbell, the light on your doorbell should start blinking when you release the button. When it is in pairing mode click 'Program'"
         }
     },
     "test": {
