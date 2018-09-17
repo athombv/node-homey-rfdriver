@@ -1,0 +1,119 @@
+{
+  "imitate": {
+    "title": {
+      "default": "Kopiere das Signal Deiner Fernbedienung.",
+      "remote": "Identifiziere Deine Fernbedienung.",
+      "wall_switch": "Identifiziere Deinen Wandschalter.",
+      "doorbell": "Identifiziere Deine Türklingel."
+    },
+    "body": {
+      "default": "Drücke auf die Taste auf Deiner Fernbedienung, die mit dem Gerät gekoppelt ist.",
+      "blinds": "Drücke auf die Hoch-/Runter-Taste auf Deiner Fernbedienung, die mit Deinen Jalousien gekoppelt ist.",
+      "remote": "Drücke auf eine Taste auf deiner Fernbedienung, um sie zu koppeln.",
+      "wall_switch": "Drücke auf eine beliebige Taste an Deinem Wandschalter, um ihn zu koppeln.",
+      "socket": "Drücke auf die Taste, die mit Deiner Steckdose gekoppelt ist.",
+      "doorbell": "Drücke auf die Taste für Deine Türklingel, um sie zu koppeln."
+    }
+  },
+  "choice": {
+    "title": {
+      "default": "Wähle eine der folgenden Optionen:",
+      "switch": "Kopiere das Signal einer Fernbedienung oder kopple ein Gerät mit Homey.",
+      "codewheel": "Kopiere das Signal einer Fernbedienung oder stelle die Coderäder manuell ein.",
+      "dipswitch": "Kopiere das Signal einer Fernbedienung oder stelle die DIP-Schalter manuell ein."
+    },
+    "body": {
+      "default": "Drücke auf eine der Tasten oben, um fortzufahren.",
+      "switch": "Wähle aus, ob Du ein bereits bestehendes Signal von einer gekoppelten Fernbedienung kopieren oder lieber ein neues Signal generieren möchtest, um dieses Gerät zu koppeln.",
+      "codewheel": "Wähle aus, ob Du ein bereits bestehendes Signal von einer gekoppelten Fernbedienung kopieren oder lieber manuell die Coderäder einstellen möchtest, um dieses Gerät zu koppeln.",
+      "dipswitch": "Wähle aus, ob Du ein bereits bestehendes Signal von einer gekoppelten Fernbedienung kopieren oder lieber manuell die DIP-Schalter einstellen möchtest, um dieses Gerät zu koppeln."
+    },
+    "buttons": {
+      "copy": {
+        "default": "Kopiere eine gekoppelte Fernbedienung."
+      },
+      "generate": {
+        "default": "Generiere ein neues Signal.",
+        "codewheel": "Stelle die Coderäder manuell ein.",
+        "dipswitch": "Stelle die DIP-Schalter ein."
+      }
+    }
+  },
+  "info": {
+    "title": {
+      "default": "Info",
+      "dipswitch": "Finde die DIP-Schalter an Deinem Gerät.",
+      "codewheel": "Finde die Coderäder an Deinem Gerät."
+    },
+    "body": {
+      "default": "Info-Meldung",
+      "dipswitch": "Finde die DIP-Schalter an Deinem Gerät wie oben angezeigt, und drücke dann auf „weiter“.",
+      "codewheel": "Finde die Coderäder an Deinem Gerät wie oben angezeigt, und drücke dann auf „weiter“."
+    }
+  },
+  "program": {
+    "programbutton": {
+      "default": "Programmieren"
+    },
+    "title": {
+      "default": "Kopple Dein Gerät mit Homey.",
+      "socket": "Versetze die Steckdose in den Koppelungsmodus."
+    },
+    "body": {
+      "default": "Versetze Dein Gerät in den Koppelungsmodus und drücke dann die Programmieren-Taste, um Dein Gerät mit Homey zu koppeln.",
+      "socket": "Drücke auf die Programmieren-Taste an Deiner Steckdose, um diese in den Koppelungsmodus zu versetzen, und drücke dann die Programmieren-Taste."
+    }
+  },
+  "test": {
+    "title": {
+      "default": "Teste Dein Gerät.",
+      "remote": "Teste Deine Fernbedienung.",
+      "wall_switch": "Teste Deinen Wandschalter.",
+      "socket": "Teste Deine Steckdose.",
+      "doorbell": "Teste Deine Türklingel.",
+      "blinds": "Teste Deine Jalousien."
+    },
+    "body": {
+      "default": "Drücke eine beliebige Taste auf Deinem Gerät oder drücke auf die Taste in dem Bild oben, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "remote": "Drücke eine beliebige Taste auf Deiner Fernbedienung oder drücke auf die Taste in dem Bild oben, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "wall_switch": "Drücke eine beliebige Taste auf Deinem Wandschalter oder drücke auf die Tasten in dem Bild oben, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "socket_generated": "Verwende den Schalter oben, um Deine Steckdose zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "socket": "Verwende Deine Fernbedienung oder den Schalter oben, um Deine Steckdose zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "button_generated": "Verwende die Taste oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "button": "Verwende Deine Fernbedienung oder die Taste oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "switch_generated": "Verwende den Schalter oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "switch": "Verwende Deine Fernbedienung oder den Schalter oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "doorbell_generated": "Verwende die Taste oben, um Deine Türklingel zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "doorbell": "Verwende Deine Türklingel-Taste oder die Taste oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "svg_buttons": "Verwende Deine Fernbedienung oder die Tasten in dem Bild oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "blinds": "Verwende Deine Fernbedienung oder die Tasten in dem Bild oben, um Deine Jalousien zu testen. Drücke auf „weiter“, um fortzufahren."
+    }
+  },
+  "codewheel": {
+    "programbutton": {
+      "default": "Programmieren"
+    },
+    "title": {
+      "default": "Konfiguriere Deinen Gerätecode."
+    },
+    "body": {
+      "default": "Drücke auf die Zeichen auf dem Coderad oben oder konfiguriere die Räder an dem Gerät, sodass sie übereinstimmen, und drücke dann auf „weiter“."
+    }
+  },
+  "dipswitch": {
+    "programbutton": {
+      "default": "Programmieren"
+    },
+    "title": {
+      "default": "Konfiguriere die DIP-Schalter Deines Geräts."
+    },
+    "body": {
+      "default": "Drücke auf die DIP-Schalter oben, um sie so anzuordnen wie auf Deinem Gerät, und drücke dann auf „Programmieren“."
+    }
+  },
+  "done": {
+    "title": {
+      "default": "Gerät wird hinzugefügt!"
+    }
+  }
+}

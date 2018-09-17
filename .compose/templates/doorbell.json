@@ -53,6 +53,10 @@
         {
             "$template": "rf.program",
             "id": "rf.program",
+            "options": {
+                "title": "rf.pair.program.title.build_in",
+                "body": "rf.pair.program.body.doorbell"
+            },
             "navigation": {
                 "prev": "rf.choice"
             }
