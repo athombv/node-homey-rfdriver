@@ -1,0 +1,99 @@
+{
+  "settings": {
+    "groups": {
+      "general": "Generelle Einstellungen"
+    },
+    "rotated": {
+      "0": "Nein",
+      "180": "Ja",
+      "label": "Signal umkehren"
+    }
+  },
+  "generic": {
+    "on": "An",
+    "off": "Aus",
+    "left": "Links",
+    "middle": "Mitte",
+    "right": "Rechts",
+    "up": "Hoch",
+    "down": "Runter",
+    "button_pressed": "Taste ist gedrückt.",
+    "buttons": {
+      "1": "Taste 1",
+      "2": "Taste 2",
+      "3": "Taste 3",
+      "4": "Taste 4",
+      "5": "Taste 5",
+      "6": "Taste 6",
+      "7": "Taste 7",
+      "8": "Taste 8",
+      "9": "Taste 9",
+      "10": "Taste 10",
+      "11": "Taste 11",
+      "12": "Taste 12",
+      "13": "Taste 13",
+      "14": "Taste 14",
+      "15": "Taste 15",
+      "16": "Taste 16",
+      "A": "Taste A",
+      "B": "Taste B",
+      "C": "Taste C",
+      "D": "Taste D",
+      "E": "Taste E",
+      "F": "Taste F",
+      "G": "Gruppe-Taste",
+      "all": "Alle-Taste",
+      "bright": "Heller-Taste",
+      "dim": "Dunkler-Taste",
+      "left": "Links-Taste",
+      "middle": "Mitte-Taste",
+      "right": "Rechts-Taste"
+    },
+    "channels": {
+      "1": "Kanal 1",
+      "2": "Kanal 2",
+      "3": "Kanal 3",
+      "4": "Kanal 4",
+      "5": "Kanal 5",
+      "I": "Kanal I",
+      "II": "Kanal II",
+      "III": "Kanal III",
+      "IV": "Kanal IV",
+      "V": "Kanal V",
+      "A": "Kanal A",
+      "B": "Kanal B",
+      "C": "Kanal C",
+      "D": "Kanal D",
+      "E": "Kanal E",
+      "F": "Kanal F"
+    },
+    "units": {
+      "1": "Element 1",
+      "2": "Element 2",
+      "3": "Element 3",
+      "4": "Element 4",
+      "5": "Element 5",
+      "6": "Element 6",
+      "7": "Element 7",
+      "8": "Element 8",
+      "9": "Element 9",
+      "10": "Element 10",
+      "11": "Element 11",
+      "12": "Element 12",
+      "13": "Element 13",
+      "14": "Element 14",
+      "15": "Element 15",
+      "16": "Element 16"
+    }
+  },
+  "error": {
+    "device_exists": "Dieses Gerät ist bereits mit Homey gekoppelt.",
+    "no_device": "Kein Gerät zur Koppelung aktiviert. Bitte schließe den Koppelungsassistenten und versuche es erneut.",
+    "no_settings": "Keine Einstellungen gefunden. Bitte versuche es erneut.",
+    "invalid_device": "Verbindung zum Mikrocontroller fehlgeschlagen. Bitte starte Homey neu, indem Du es kurz vom Strom nimmst.",
+    "invalid_device_data": "Das angelegte Gerät ist ungültig. Bitte entferne es und starte die Koppelung erneut.",
+    "data_no_object": "Daten müssen ein Objekt sein!",
+    "pairdevice_invalid_data": "Die Daten des neu gekoppelten Geräts sind ungültig, Änderungen werden zurückgesetzt.",
+    "invalid_send_data": "Ungültiger Datensendeauftrag. Bitte kontaktiere den Hersteller."
+  }
+}

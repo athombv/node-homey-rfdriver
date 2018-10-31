@@ -19,7 +19,7 @@
         "title": {
             "default": "Kies een van de volgende opties",
             "switch": "Kopieer de afstandsbediening of programmeer met Homey",
-            "codewheel": "Kopieer de afstandsbediening of stel de lettercodeshijfen handmatig in",
+            "codewheel": "Kopieer de afstandsbediening of stel de lettercodeschijfen handmatig in",
             "dipswitch": "Kopieer de afstandsbediening of stel de dipswitches handmatig in"
         },
         "body": {
@@ -42,11 +42,11 @@
     "info": {
         "title": {
             "dipswitch": "Vind de dipswitches op het apparaat",
-            "codewheel": "Vind de lettercodeshijfen op het apparaat"
+            "codewheel": "Vind de lettercodeschijfen op het apparaat"
         },
         "body": {
             "dipswitch": "Vind de dipswitches op het apparaat zoals hierboven aangegeven, klik daarna op volgende.",
-            "codewheel": "Vind de lettercodeshijfen op het apparaat zoals hierboven aangegeven, klik daarna op volgende."
+            "codewheel": "Vind de lettercodeschijfen op het apparaat zoals hierboven aangegeven, klik daarna op volgende."
         }
     },
     "program": {
@@ -59,7 +59,8 @@
         },
         "body": {
             "default": "Zet het apparaat in programmeer modus en klik op 'Programmeer' om het apparaat met Homey te verbinden.",
-            "socket": "Houd de programmeer knop van de contactdoos een paar seconden ingehouden om deze in programeer modus te zetten. Klik daarna op de 'Programmeer' knop."
+            "socket": "Houd de programmeer knop van de contactdoos een paar seconden ingehouden om deze in programeer modus te zetten. Klik daarna op de 'Programmeer' knop.",
+            "doorbell": "Druk op de programmeer knop, het lampje op de deurbel moet gaan knipperen wanneer de knop losgelaten wordt. Klik daarna op 'Programmeer'."
         }
     },
     "test": {
