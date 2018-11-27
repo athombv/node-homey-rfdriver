@@ -25,7 +25,7 @@
         "body": {
             "default": "Klik op een van de opties om verder te gaan.",
             "switch": "Kies of je het signaal van een gekoppelde afstandsbediening wil kopiëren of dat je het apparaat wil programmeren met een nieuw signaal van Homey.",
-            "codewheel": "Kies of je het signaal van een gekoppelde afstandsbediening wil kopiëren of dat je de lettercodeshijf handmatig wil instellen.",
+            "codewheel": "Kies of je het signaal van een gekoppelde afstandsbediening wil kopiëren of dat je de lettercodeschijf handmatig wil instellen.",
             "dipswitch": "Kies of je het signaal van een gekoppelde afstandsbediening wil kopiëren of dat je de dipswitches handmatig wil instellen."
         },
         "buttons": {
@@ -34,7 +34,7 @@
             },
             "generate": {
                 "default": "Genereer nieuw signaal",
-                "codewheel": "lettercodeshijf instellen",
+                "codewheel": "lettercodeschijf instellen",
                 "dipswitch": "dipswitches instellen"
             }
         }
@@ -71,11 +71,11 @@
             "socket": "Test de contactdoos"
         },
         "body": {
-            "default": "Druk op een willekeurige knop op het apparaat of op de knoppen in het bovenstaande plaatje om het signaal te testen. Klik op volgende om verder te gaan.",
-            "remote": "Druk op een willekeurige knop op de afstandsbediening of op de knoppen in het bovenstaande plaatje om het signaal te testen. Klik op volgende om verder te gaan.",
-            "wall_switch": "Druk op een willekeurige knop op de wandschakelaar of op de knoppen in het bovenstaande plaatje om het signaal te testen. Klik op volgende om verder te gaan",
-            "socket_generated": "Gebruik te bovenstaande switch om de schakeldoos te testen. Klik op volgende om verder te gaan.",
-            "socket": "Gebruik de afstandsbediening of de bovenstaande switch om de schakeldoos te testen. Klik op volgende om verder te gaan.",
+            "default": "Druk op een willekeurige knop op het apparaat om het signaal te testen. Klik op volgende om verder te gaan.",
+            "remote": "Druk op een willekeurige knop op de afstandsbediening om het signaal te testen. Klik op volgende om verder te gaan.",
+            "wall_switch": "Druk op een willekeurige knop op de wandschakelaar om het signaal te testen. Klik op volgende om verder te gaan",
+            "socket_generated": "Gebruik de bovenstaande schakelaar om de schakeldoos te testen. Klik op volgende om verder te gaan.",
+            "socket": "Gebruik de afstandsbediening of de bovenstaande schakelaar om de schakeldoos te testen. Klik op volgende om verder te gaan.",
             "button_generated": "Gebruik de bovenstaande knop om het apparaat te testen. Klik op volgende om verder te gaan.",
             "button": "Gebruik de afstandsbediening of te bovenstaande knop om het apparaat te testen. Klik op volgende om verder te gaan.",
             "switch_generated": "Gebruik de bovenstaande knop om het apparaat te testen. Klik op volgende om verder te gaan.",
@@ -93,7 +93,7 @@
             "default": "Configureer de apparaatcode"
         },
         "body": {
-            "default": "Klik op de karakters op de bovenstaande lettercodeshijf of pas de lettercodeshijf op het apparaat aan zodat deze gelijk aan elkaar zijn, klik daarna op volgende."
+            "default": "Klik op de karakters op de bovenstaande lettercodeschijf of pas de lettercodeschijf op het apparaat aan zodat deze gelijk aan elkaar zijn, klik daarna op volgende."
         }
     },
     "dipswitch": {
