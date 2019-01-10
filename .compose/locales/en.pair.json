@@ -75,9 +75,9 @@
             "blinds": "Test your blinds"
         },
         "body": {
-            "default": "Press a random button on your device or click the button in the image above to test the signal. Press next to continue.",
-            "remote": "Press a random button on your remote or click the button in the image above to test the signal. Press next to continue.",
-            "wall_switch": "Press a random button on your wall switch or click the buttons in the image above to test the signal. Press next to continue.",
+            "default": "Press a random button on your device to test the signal. Press next to continue.",
+            "remote": "Press a random button on your remote to test the signal. Press next to continue.",
+            "wall_switch": "Press a random button on your wall switch to test the signal. Press next to continue.",
             "socket_generated": "Use the switch above to test your socket. Press next to continue.",
             "socket": "Use your remote or the switch above to test your socket. Press next to continue.",
             "button_generated": "Use the button above to test your device. Press next to continue.",
@@ -109,7 +109,7 @@
             "default": "Configure your device dipswitches"
         },
         "body": {
-            "default": "Click on the dipswitches above to put them in the same arrangement as those of your device, then click program."
+            "default": "Click on the dipswitches to put them in the same arrangement as those of your device, plug in the socket, then click program."
         }
     },
     "done": {

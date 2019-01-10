@@ -8,16 +8,12 @@
             "options": {
                 "title": "rf.pair.imitate.title.remote",
                 "body": "rf.pair.imitate.body.remote"
-            },
-            "navigation": {
-                "next": "rf.test"
             }
         },
         {
             "$template": "rf.test",
             "id": "rf.test",
             "navigation": {
-                "prev": "rf.imitate",
                 "next": "rf.done"
             }
         },

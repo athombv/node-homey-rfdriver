@@ -74,9 +74,9 @@
       "blinds": "Teste Deine Jalousien."
     },
     "body": {
-      "default": "Drücke eine beliebige Taste auf Deinem Gerät oder drücke auf die Taste in dem Bild oben, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
-      "remote": "Drücke eine beliebige Taste auf Deiner Fernbedienung oder drücke auf die Taste in dem Bild oben, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
-      "wall_switch": "Drücke eine beliebige Taste auf Deinem Wandschalter oder drücke auf die Tasten in dem Bild oben, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "default": "Drücke eine beliebige Taste auf Deinem Gerät, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "remote": "Drücke eine beliebige Taste auf Deiner Fernbedienung, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
+      "wall_switch": "Drücke eine beliebige Taste auf Deinem Wandschalter, um das Signal zu testen. Drücke auf „weiter“, um fortzufahren.",
       "socket_generated": "Verwende den Schalter oben, um Deine Steckdose zu testen. Drücke auf „weiter“, um fortzufahren.",
       "socket": "Verwende Deine Fernbedienung oder den Schalter oben, um Deine Steckdose zu testen. Drücke auf „weiter“, um fortzufahren.",
       "button_generated": "Verwende die Taste oben, um Dein Gerät zu testen. Drücke auf „weiter“, um fortzufahren.",
