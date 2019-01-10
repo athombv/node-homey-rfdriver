@@ -90,6 +90,10 @@
         "device_exists": "Apparaat is al gekoppeld met Homey.",
         "no_device": "Er is geen apparaat ingesteld. Sluit de pairing wizard en probeer opnieuw.",
         "no_settings": "Geen instelling object. Probeer aub opnieuw.",
-        "invalid_device": "Het apparaat dat is aangemaakt is incorrect. Verwijder dit apparaat en probeer opnieuw."
+        "invalid_device": "Het apparaat dat is aangemaakt is incorrect. Verwijder dit apparaat en probeer opnieuw.",
+        "invalid_device_data": "Het apparaat dat is aangemaakt is incorrect. Verwijder dit apparaat en probeer opnieuw.",
+        "data_no_object": "Geen data object ontvangen",
+        "pairdevice_invalid_data": "Nieuw gekoppelde apparaat data is incorrect, wijzigingen worden teruggedraaid.",
+        "invalid_send_data": "Data om te versturen is incorrect."
     }
 }
