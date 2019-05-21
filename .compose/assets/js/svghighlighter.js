@@ -115,12 +115,17 @@ jQuery(function ($) {
 		});
 	}
 
+	// if we have a selector with a `.` in it, place a backslash in front of it so jQuery doesnt try to select a class.
+	function escapeSelector(selector){
+		return selector.replace(/\./g, "\\.");
+	}
+
 	function setAttributeForState(svg, state, prefix, attr, value, notValue) {
 		var elems = Object.keys(state).reduce(function (elements, curr) {
-			if (svg.is('[' + prefix + '\\:' + curr + ']')) {
+			if (svg.is('[' + prefix + '\\:' + escapeSelector(curr) + ']')) {
 				elements = elements.add(svg);
 			}
-			return elements.add(svg.find('[' + prefix + '\\:' + curr + ']'));
+			return elements.add(svg.find('[' + prefix + '\\:' + escapeSelector(curr) + ']'));
 		}, $([]));
 		elems.each(function () {
 			var $elem = $(this);
@@ -134,7 +139,7 @@ jQuery(function ($) {
 				Object.keys(state).reduce(function (prevResult, curr) {
 					return prevResult &&
 						(
-							!$elem.is('[' + prefix + '\\:' + curr + ']') ||
+							!$elem.is('[' + prefix + '\\:' + escapeSelector(curr) + ']') ||
 							new RegExp('^' + $elem.attr(prefix + ':' + curr) + '$').test(String(state[curr]))
 						);
 				}, true)
