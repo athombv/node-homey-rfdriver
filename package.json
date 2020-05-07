@@ -15,7 +15,5 @@
     "url": "https://github.com/athombv/node-homey-rfdriver/issues"
   },
   "homepage": "https://github.com/athombv/node-homey-rfdriver#readme",
-  "devDependencies": {
-    "homey": "^2.3.3"
-  }
+  "devDependencies": {}
 }
