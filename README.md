@@ -43,6 +43,8 @@ Our signal definition must be added to `/.homeycompose/signals/433/my_signal.jso
 Your JSON describes how to encode and decode the low & high signals into bits.
 The RFSignal you define here will parse these bits (or bytes) from and to JavaScript objects.
 
+`/lib/my_signal.js`
+
 ```javascript
 'use strict';
 
@@ -100,9 +102,11 @@ module.exports = class extends RFSignal {
 
 ### RFDriver
 
+`/drivers/my_driver/driver.js`
+
 ```javascript
 const { RFDriver } = require('homey-rfdriver');
-const MySignal = require('./MySignal');
+const MySignal = require('../../lib/MySignal');
 
 module.exports = class extends RFDriver {
 
@@ -113,7 +117,9 @@ module.exports = class extends RFDriver {
 
 #### Transmitter
 
-Add this to your `/drivers/<driver_id>/driver.compose.json`:
+Copy `/pair/rf_transmitter_learn.html` to your driver's `/pair` folder. 
+
+Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 
 ```json
 "pair": [
@@ -133,7 +139,9 @@ Add this to your `/drivers/<driver_id>/driver.compose.json`:
 
 #### Receiver
 
-Add this to your `/drivers/<driver_id>/driver.compose.json`:
+Copy `/pair/rf_receiver_learn.html` and `/pair/rf_receiver_add.html` to your driver's `/pair` folder. 
+
+Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 
 ```json
 "pair": [
@@ -163,6 +171,8 @@ Add this to your `/drivers/<driver_id>/driver.compose.json`:
 ```
 
 ### RFDevice
+
+`/drivers/my_driver/device.js`
 
 ```javascript
 const { RFDevice } = require('homey-rfdriver');
