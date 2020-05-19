@@ -16,12 +16,6 @@
     background: url(image.svg) no-repeat center center;
     background-size: contain;
   }
-
-  #rf-receiver-learn-instruction {
-    display: block;
-    text-align: center;
-    font-weight: 400;
-  }
 </style>
 
 <div id="rf-receiver-learn-wrap">
@@ -33,14 +27,6 @@
 
 <script type="text/javascript">
   (function () {
-    const $instruction = document.getElementById('rf-receiver-learn-instruction');
-
-    Homey.getOptions((err, options) => {
-      if (err) return Homey.error(err);
-      if (options && options.title) Homey.setTitle(Homey.__(options.title));
-      if (options && options.instruction) $instruction.innerHTML = Homey.__(options.instruction);
-    });
-
     Homey.on('createDevice', (device) => {
       Homey.createDevice(device, err => {
         if (err) return Homey.error(err);
