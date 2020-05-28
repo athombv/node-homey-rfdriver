@@ -170,6 +170,35 @@ Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 ]
 ```
 
+#### IR Remote
+
+Copy `/pair/rf_ir_remote_learn.html` and `/pair/rf_ir_remote_add` to your driver's `/pair` folder. 
+
+Then add this to your `/drivers/<driver_id>/driver.compose.json`:
+
+```json
+"pair": [
+  {
+    "id": "rf_ir_remote_learn",
+    "navigation": {
+      "next": "rf_ir_remote_add"
+    },
+    "options": {
+      "title": {
+        "en": "Pair your IR remote",
+        "nl": "Koppel je IR afstandsbediening"
+      },
+      "instruction": {
+        "en": "Press next to pair your remote.",
+        "nl": "Druk op volgende om je afstandsbediening te koppelen."
+      }
+    }
+  },{
+    "id": "rf_ir_remote_add"
+  }
+]
+```
+
 ### RFDevice
 
 `/drivers/my_driver/device.js`

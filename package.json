@@ -1,6 +1,6 @@
 {
   "name": "homey-rfdriver",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Helper module for RF (433MHz, 868MHz, Infrared) apps for Homey",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,8 @@
     "url": "https://github.com/athombv/node-homey-rfdriver/issues"
   },
   "homepage": "https://github.com/athombv/node-homey-rfdriver#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-athom": "^2.1.0"
+  }
 }
