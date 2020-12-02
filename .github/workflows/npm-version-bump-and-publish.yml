@@ -21,7 +21,7 @@ name: NPM
 #   branch. If pushing to a non-protected branch replace HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN with GITHUB_TOKEN
 
 # Optional secrets:
-# - SSH_KEY: required if `npm ci` needs to install private npm packages, make sure to enable webfactory/ssh-agent@v0.2.0 step
+# - SSH_KEY: required if `npm ci` needs to install private npm packages
 
 # Note: make sure to commit package-lock.json, this is needed for `npm ci`.
 
@@ -68,11 +68,13 @@ jobs:
           # Needed for publishing to npm
           registry-url: 'https://registry.npmjs.org'
 
-      # Only use the ssh-agent action below if your repository has private git dependencies (see README.md for
-      # instructions on how to configure an ssh key).
-      # - uses: webfactory/ssh-agent@v0.2.0
-      #  with:
-      #    ssh-private-key: ${{ secrets.SSH_KEY }}
+      # Set SSH key
+      - uses: webfactory/ssh-agent@v0.4.1
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        if: env.SSH_KEY != null
+        with:
+          ssh-private-key: ${{ env.SSH_KEY }}
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
       - name: Build
@@ -102,7 +104,7 @@ jobs:
         run: |
           npm publish
           VERSION="$(node -p "require('./package.json').version")"
-          echo "::set-env name=package_version::${VERSION}"
+          echo package_version=${VERSION} >> $GITHUB_ENV
           echo $package_version
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
@@ -113,7 +115,7 @@ jobs:
         run: |
           npm publish --tag beta
           VERSION="$(node -p "require('./package.json').version")@beta"
-          echo "::set-env name=package_version::${VERSION}"
+          echo package_version=${VERSION} >> $GITHUB_ENV
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
