@@ -13,10 +13,8 @@ This module requires Homey Apps SDK v3.
 ## Installation
 
 ```bash
-$ homey app plugin add
+$ npm install homey-rfdriver
 ```
-
-Then select `rf`.
 
 ## Requirements
 
