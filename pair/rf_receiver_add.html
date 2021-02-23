@@ -1,0 +1,93 @@
+<style type="text/css">
+  #rf-receiver-add-wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10%;
+    box-sizing: border-box;
+  }
+
+  #rf-receiver-add-image {
+    display: block;
+    width: 80vw;
+    height: 80vw;
+    margin: 2em auto;
+    background: url(image.svg) no-repeat center center;
+    background-size: contain;
+  }
+
+  #rf-receiver-add-instruction {
+    display: block;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  #rf-receiver-add-back,
+  #rf-receiver-add-create {
+    font-family: monospace;
+    font-size: 18px;
+    margin: 0 5px;
+  }
+
+  #rf-receiver-add-back {
+    background-color: #C13900;
+    color: white;
+  }
+</style>
+
+<div id="rf-receiver-add-wrap">
+
+  <div id="rf-receiver-add-image"></div>
+  <p id="rf-receiver-add-instruction"></p>
+
+  <div>
+    <button id="rf-receiver-add-back" class="hy-button">⨯</button>
+    <button id="rf-receiver-add-create" class="hy-button hy-button-primary">✓</button>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  (function () {
+    const $back = document.getElementById('rf-receiver-add-back');
+    const $create = document.getElementById('rf-receiver-add-create');
+    const $instruction = document.getElementById('rf-receiver-add-instruction');
+    let creatingDevice = false;
+
+    Homey.getOptions((err, options) => {
+      if (err) return Homey.error(err);
+      if (options && options.instruction) $instruction.innerHTML = Homey.__(options.instruction);
+    });
+
+    Homey.emit('tx', null, err => {
+      if (err) return Homey.alert(err);
+    });
+
+    $back.addEventListener('click', e => {
+      Homey.prevView();
+    });
+
+    $create.addEventListener('click', e => {
+      if (creatingDevice) return;
+      creatingDevice = true;
+
+      Homey.emit('createDevice', null, (err, device) => {
+        if (err) {
+          creatingDevice = false;
+          return Homey.alert(err);
+        }
+
+        return Homey.createDevice(device, err => {
+          if (err) {
+            creatingDevice = false;
+            return Homey.alert(err);
+          }
+
+          return Homey.done();
+        });
+      });
+
+    });
+  })();
+</script>
