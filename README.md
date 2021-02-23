@@ -2,13 +2,19 @@
 
 This module helps developers create RF (433MHz, 868MHz, Infrared) apps for Homey.
 
+This module requires Homey Apps SDK v3.
+
+## Related Modules
+
+* [node-homey-oauth2app](https://github.com/athombv/node-homey-oauth2app) — Module for OAuth2 apps
+* [node-homey-zwavedriver](https://github.com/athombv/node-homey-zwavedriver) — Module for Z-Wave drivers
+* [node-homey-zigbeedriver](https://github.com/athombv/node-homey-zigbeedriver) — Module for Zigbee drivers
+
 ## Installation
 
 ```bash
-$ homey app plugin add
+$ npm install homey-rfdriver
 ```
-
-Then select `rf`.
 
 ## Requirements
 
