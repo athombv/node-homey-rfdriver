@@ -1,10 +1,7 @@
 'use strict';
 
-module.exports = {
-	Driver: require('./lib/Driver'),
-	Device: require('./lib/Device'),
-	Debouncer: require('./lib/Debouncer'),
-	Logger: require('./lib/Logger'),
-	Signal: require('./lib/Signal'),
-	util: require('./lib/util'),
-};
+module.exports.RFDevice = require('./lib/RFDevice');
+module.exports.RFDriver = require('./lib/RFDriver');
+module.exports.RFSignal = require('./lib/RFSignal');
+module.exports.RFUtil = require('./lib/RFUtil');
+module.exports.RFError = require('./lib/RFError');
