@@ -176,6 +176,8 @@ Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 ]
 ```
 
+> To present the user with a choice whether to copy a remote, or let Homey generate a new code, use the `/pair/rf_receiver_copy_or_create.html` template. Then include both _receiver_ and _transmitter_ pair in your `driver.compose.json`.
+
 #### IR Remote
 
 Copy `/pair/rf_ir_remote_learn.html` and `/pair/rf_ir_remote_add` to your driver's `/pair` folder. 
