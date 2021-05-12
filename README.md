@@ -2,8 +2,6 @@
 
 This module helps developers create RF (433MHz, 868MHz, Infrared) apps for Homey.
 
-This module requires [Homey Apps SDK v3](https://apps-sdk-v3.developer.homey.app/).
-
 ## Related Modules
 
 * [node-homey-oauth2app](https://github.com/athombv/node-homey-oauth2app) — Module for OAuth2 apps
@@ -18,7 +16,8 @@ $ npm install homey-rfdriver
 
 ## Requirements
 
-This module requires [Homey Apps SDK v3](https://apps-sdk-v3.developer.homey.app/).
+* This module requires [Homey Apps SDK v3](https://apps-sdk-v3.developer.homey.app/).
+* Your app needs [permission](https://apps.developer.homey.app/the-basics/app/permissions) for either `homey:wireless:433` or `homey:wireless:ir`.
 
 ## Usage
 
