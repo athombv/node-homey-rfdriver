@@ -1,14 +1,21 @@
 # Homey RFDriver
 
+[![npm](https://img.shields.io/npm/v/homey-rfdriver)](https://www.npmjs.com/package/homey-rfdriver) [![Lint](https://github.com/athombv/node-homey-rfdriver/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/athombv/node-homey-rfdriver/actions/workflows/lint.yml) [![NPM](https://github.com/athombv/node-homey-rfdriver/actions/workflows/deploy.yml/badge.svg)](https://github.com/athombv/node-homey-rfdriver/actions/workflows/deploy.yml) [![Deploy Documentation To GitHub Pages](https://github.com/athombv/node-homey-rfdriver/actions/workflows/docs.yml/badge.svg?branch=master)](https://github.com/athombv/node-homey-rfdriver/actions/workflows/docs.yml)
+
 This module helps developers create RF (433MHz, 868MHz, Infrared) apps for Homey.
 
 This module requires Homey Apps SDK v3.
 
+## Documentation
+
+Documentation is available at [https://athombv.github.io/node-homey-rfdriver/](https://athombv.github.io/node-homey-rfdriver/).
+
 ## Related Modules
 
-* [node-homey-oauth2app](https://github.com/athombv/node-homey-oauth2app) — Module for OAuth2 apps
-* [node-homey-zwavedriver](https://github.com/athombv/node-homey-zwavedriver) — Module for Z-Wave drivers
-* [node-homey-zigbeedriver](https://github.com/athombv/node-homey-zigbeedriver) — Module for Zigbee drivers
+* [node-homey-zwavedriver](https://athombv.github.io/node-homey-zwavedriver) — Module for Z-Wave drivers
+* [node-homey-zigbeedriver](https://athombv.github.io/node-homey-zigbeedriver) — Module for Zigbee drivers
+* [node-homey-oauth2app](https://athombv.github.io/node-homey-oauth2app) — Module for OAuth2 apps
+* [node-homey-log](https://athombv.github.io/node-homey-log) — Module to log unhandled errors to Sentry
 
 ## Installation
 
@@ -18,7 +25,8 @@ $ npm install homey-rfdriver
 
 ## Requirements
 
-This module requires Homey Apps SDK v3.
+* This module requires [Homey Apps SDK v3](https://apps-sdk-v3.developer.homey.app/).
+* Your app needs [permission](https://apps.developer.homey.app/the-basics/app/permissions) for either `homey:wireless:433` or `homey:wireless:ir`.
 
 ## Usage
 

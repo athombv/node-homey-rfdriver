@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    "jsdoc-ts-utils",
+    "plugins/markdown"
+  ],
+  "source": {
+    "include": [
+      "./README.md",
+      "./lib",
+      "./index.js"
+    ]
+  },
+  "opts": {
+    "mainpagetitle": "Homey RFDriver",
+    "destination": "./build",
+    "template": "./node_modules/homey-jsdoc-template"
+  },
+  "tsUtils": {
+    "typeScriptUtilityTypes": false
+  }
+}

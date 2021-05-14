@@ -1,11 +1,8 @@
 name: Lint
 
-# Optional secrets:
-# - SSH_KEY: if `npm ci` needs to install private npm packages
-
 # GitHub repo configuration:
 # 1. If you have protected branches, go to Branches > edit protected branch > enable 'Require status checks to pass before
-#    merging' and select the 'ESLint' status check.
+#    merging' and select the 'Lint' status check.
 
 # Note: make sure to commit package-lock.json, this is needed for `npm ci`.
 
@@ -23,6 +20,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
+
       # Checks out the current repository.
       - uses: actions/checkout@v2
 
