@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Source: RFDriver.js - Homey RFDriver</title>
+
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png" />
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="preload" as="image" href="images/logo.png">
+  <link rel="preload" href="styles/homey.min.css" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="styles/atom-one-light.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+</head>
+
+<body>
+<div class="container">
+  <nav class="navigation container__navigation component">
+    <header class="navigation__header">
+                <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
+                <h2 class="navigation__title"><a href="index.html">Homey RFDriver</a></h2>
+                <button data-navigation-toggle class="navigation__button" title="menu"></button>
+             </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
+            <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
+            <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-search-key="rfdevice" class="nav-group__item"><a href="RFDevice.html">RFDevice</a></li><li data-search-key="rfdriver" class="nav-group__item"><a href="RFDriver.html">RFDriver</a></li><li data-search-key="rferror" class="nav-group__item"><a href="RFError.html">RFError</a></li><li data-search-key="rfsignal" class="nav-group__item"><a href="RFSignal.html">RFSignal</a></li><li data-search-key="rfutil" class="nav-group__item"><a href="RFUtil.html">RFUtil</a></li></ul></nav></div></div></div>
+  </nav>
+
+  <main id="main" class="main container__main">
+    
+  
+  
+  <div class="main__center">
+    <div class="main__content align-baseline">
+      <h1 class="text-preset-heading-1">
+        Source: RFDriver.js
+      </h1>
+      
+    <section>
+        <article>
+            <pre class="source linenums"><code>/* eslint-disable max-len */
+
+'use strict';
+
+const Homey = require('homey');
+const RFSignal = require('./RFSignal');
+const RFUtil = require('./RFUtil');
+
+const sRF = Symbol('RF');
+
+/**
+ * @extends Homey.Driver
+ * @hideconstructor
+ */
+class RFDriver extends Homey.Driver {
+
+  /** @type {RFSignal} */
+  static SIGNAL = null;
+
+  /**
+   * Do not use this method, but use {@link RFDriver#onRFInit} instead.
+   * @returns {Promise&lt;void>}
+   */
+  async onInit() {
+    this[sRF] = {};
+    this[sRF].signal = await this.getRFSignal();
+    this[sRF].rxEnabledDevices = new Set();
+
+    this.manifest = this.manifest || this.getManifest();
+    this[sRF].name = this.homey.__(this.manifest.name);
+
+    await this.onRFInit();
+  }
+
+  /**
+   * @returns {Promise&lt;void>}
+   */
+  async onRFInit() {
+    // Overload Me
+  }
+
+  /**
+   * @returns {Promise&lt;*>}
+   */
+  async getRFSignal() {
+    const { homey } = this;
+    const Signal = this.constructor.SIGNAL;
+
+    if (!(Signal.prototype instanceof RFSignal)) {
+      throw new Error('Signal class does not extend RFSignal');
+    }
+
+    this.homey.app[sRF] = this.homey.app[sRF] || {};
+    this.homey.app[sRF].signals = this.homey.app[sRF].signals || {};
+    this.homey.app[sRF].signals[Signal.TYPE] = this.homey.app[sRF].signals[Signal.TYPE] || {};
+    this.homey.app[sRF].signals[Signal.TYPE][Signal.ID] = this.homey.app[sRF].signals[Signal.TYPE][Signal.ID] || new Signal({ homey });
+
+    return this.homey.app[sRF].signals[Signal.TYPE][Signal.ID];
+  }
+
+  /**
+   * @param listener
+   * @returns {Promise&lt;void>}
+   */
+  async enableRX(listener) {
+    await this[sRF].signal.registerRXListener(listener);
+  }
+
+  /**
+   * @param listener
+   * @returns {Promise&lt;void>}
+   */
+  async disableRX(listener) {
+    await this[sRF].signal.unregisterRXListener(listener);
+  }
+
+  /**
+   * @param command
+   * @param {object} props
+   * @returns {Promise&lt;void>}
+   */
+  async tx(command, { ...props } = {}) {
+    const signal = await this.getRFSignal();
+    await signal.tx(command, { ...props });
+  }
+
+  /**
+   * @param {Session} session
+   * @returns {Promise&lt;void>}
+   */
+  async onPair(session) {
+    session.setHandler('showView', async viewId => {
+      switch (viewId) {
+        case 'rf_receiver_learn': {
+          await this.onPairRFReceiverLearn(session);
+          break;
+        }
+        case 'rf_transmitter_learn': {
+          await this.onPairRFTransmitter(session);
+          break;
+        }
+        case 'rf_ir_remote_add': {
+          await this.onPairIRRemoteAdd(session);
+          break;
+        }
+        default: {
+          // Do Nothing
+        }
+      }
+    });
+  }
+
+  /**
+   * @param {Session} session
+   * @returns {Promise&lt;void>}
+   */
+  async onPairRFReceiverLearn(session) {
+    const signal = await this.getRFSignal();
+    const command = signal.constructor.createPairCommand();
+
+    session.setHandler('tx', async () => {
+      await signal.tx(command);
+    });
+
+    session.setHandler('createDevice', async () => {
+      return {
+        name: this[sRF].name,
+        data: {
+          uuid: RFUtil.generateUUIDv4(),
+          ...signal.constructor.commandToDeviceData(command),
+        },
+      };
+    });
+  }
+
+  /**
+   * @param {Session} session
+   * @returns {Promise&lt;void>}
+   */
+  async onPairRFTransmitter(session) {
+    let done = false;
+
+    const signal = await this.getRFSignal();
+    const listener = async (command, { isFirst }) => {
+      if (!isFirst) return;
+      if (done) return;
+
+      await session.emit('createDevice', {
+        name: this[sRF].name,
+        data: {
+          uuid: RFUtil.generateUUIDv4(),
+          ...signal.constructor.commandToDeviceData(command),
+        },
+      });
+
+      done = true;
+    };
+
+    await signal.registerRXListener(listener);
+
+    session.setHandler('disconnect', async () => {
+      await signal.unregisterRXListener(listener);
+    });
+  }
+
+  /**
+   * @description Since IR remotes don't have any unique data to identify them, use a uuid v4 as device data.
+   * @param {Session} session
+   * @returns {Promise&lt;void>}
+   */
+  async onPairIRRemoteAdd(session) {
+    await session.emit('createDevice', {
+      name: this[sRF].name,
+      data: {
+        uuid: RFUtil.generateUUIDv4(),
+      },
+    });
+  }
+
+}
+
+module.exports = RFDriver;
+</code></pre>
+        </article>
+    </section>
+    </div>
+  </div>
+  
+
+
+
+  </main>
+</div>
+
+<script src="scripts/ready.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/toc.js"></script>
+
+<link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
+<script src="scripts/highlight.min.js"></script>
+<!--<script src="scripts/linenumber.js"></script>-->
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>

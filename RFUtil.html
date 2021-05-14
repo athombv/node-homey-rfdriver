@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>RFUtil - Homey RFDriver</title>
+
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png" />
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="preload" as="image" href="images/logo.png">
+  <link rel="preload" href="styles/homey.min.css" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="styles/atom-one-light.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+</head>
+
+<body>
+<div class="container">
+  <nav class="navigation container__navigation component">
+    <header class="navigation__header">
+                <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
+                <h2 class="navigation__title"><a href="index.html">Homey RFDriver</a></h2>
+                <button data-navigation-toggle class="navigation__button" title="menu"></button>
+             </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
+            <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
+            <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-search-key="rfdevice" class="nav-group__item"><a href="RFDevice.html">RFDevice</a></li><li data-search-key="rfdriver" class="nav-group__item"><a href="RFDriver.html">RFDriver</a></li><li data-search-key="rferror" class="nav-group__item"><a href="RFError.html">RFError</a></li><li data-search-key="rfsignal" class="nav-group__item"><a href="RFSignal.html">RFSignal</a></li><li data-search-key="rfutil" class="nav-group__item"><a href="RFUtil.html">RFUtil</a></li></ul></nav></div></div></div>
+  </nav>
+
+  <main id="main" class="main container__main">
+    
+  
+  
+  <div class="flex flex-direction-column flex-fill max-100">
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <h1 id="introduction" class="text-preset-heading-1">
+            RFUtil
+          </h1>
+        </div>
+        <div class="main__index"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <section>
+  <header>
+    
+      <h2 class="display-none">
+        
+        <span class="attribs"><span class="function__type-signature"></span></span>
+        
+        RFUtil
+        
+      </h2>
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+      
+
+
+<section id="RFUtil" class="method trim ">
+  
+
+  
+
+</section>
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section id="section-methods">
+      <h2 class="subsection-title">Methods</h2>
+
+      
+      
+
+
+<section id=".bitArrayToNumber" class="method trim component">
+  
+
+  
+  <h3 class="method__name">bitArrayToNumber</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>bitArrayToNumber<span class="function__parameters">(<span class="function__parameter">inputBitArray</span>)</span><span class="function__type-signature">:  Number</span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Turns a bit array into a base-10 number</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>inputBitArray</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">Array.&lt;Number></span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim"><p>a bit array only containing the numbers 0 and 1</p>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>result The number representation</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">Number</span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>// returns 25
+RFUtil.bitArrayToNumber([0, 1, 1, 0, 0, 1]);</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".bitArrayToString" class="method trim component">
+  
+
+  
+  <h3 class="method__name">bitArrayToString</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>bitArrayToString<span class="function__parameters">(<span class="function__parameter">inputBitArray</span>)</span><span class="function__type-signature">:  String|Error</span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Turns a bit array into a bit string</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>inputBitArray</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">Array.&lt;Number></span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim"><p>a bit array only containing numbers</p>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>result The bitString</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Error</span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>// returns '011201'
+RFUtil.bitArrayToString([0, 1, 1, 2, 0, 1]);</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".bitStringToBitArray" class="method trim component">
+  
+
+  
+  <h3 class="method__name">bitStringToBitArray</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>bitStringToBitArray<span class="function__parameters">(<span class="function__parameter">inputBitString</span>)</span><span class="function__type-signature">:  Array.&lt;Number>|Error</span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Turns a bit string into a bit array</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>inputBitString</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">String</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim"><p>a bit string only containing numbers</p>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>result The bitArray</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">Array.&lt;Number></span>
+|
+
+<span class="param-type">Error</span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>// returns [0, 1, 1, 2, 0, 1]
+RFUtil.bitStringToBitArray('011201');</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".deepEqual" class="method trim component">
+  
+
+  
+  <h3 class="method__name">deepEqual</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>deepEqual<span class="function__parameters">(<span class="function__parameter">a</span>, <span class="function__parameter">b</span>)</span><span class="function__type-signature">:  boolean</span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>a</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>b</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">boolean</span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".generateRandomBitString" class="method trim component">
+  
+
+  
+  <h3 class="method__name">generateRandomBitString</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>generateRandomBitString<span class="function__parameters">(<span class="function__parameter">length</span>)</span><span class="function__type-signature">:  Array.&lt;Number></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Generates a random base-2 bit array</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>length</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">Number</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim"><p>the length that the result array should have (e.g. 8 bits)</p>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>result The bitArray</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">Array.&lt;Number></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>// returns [0, 1, 1, 0, 0, 1]
+RFUtil.generateRandomBitString(6);</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".generateUUIDv4" class="method trim component">
+  
+
+  
+  <h3 class="method__name">generateUUIDv4</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>generateUUIDv4<span class="function__parameters">()</span><span class="function__type-signature">:  String</span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Generates an UUID v4 String</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>uuid v4</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">String</span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".numberToBitArray" class="method trim component">
+  
+
+  
+  <h3 class="method__name">numberToBitArray</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>numberToBitArray<span class="function__parameters">(<span class="function__parameter">inputNumber</span>, <span class="function__parameter">length</span>)</span><span class="function__type-signature">:  Array.&lt;Number></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Turns a number into a bit array</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>inputNumber</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">Number</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim"><p>the number to turn into a base-2 bit array</p>
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>length</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">Number</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim"><p>the length that the result array should have (e.g. 8 bits)</p>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>result The bitArray or a error object when invalid input is given</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">Array.&lt;Number></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>// returns [0, 1, 1, 0, 0, 1]
+RFUtil.numberToBitArray(25, 6);</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+    </section>
+    
+
+    
+
+    
+  </article>
+
+</section>
+        </div>
+        <div class="main__index">
+          
+<nav class="toc trim">
+  <h4 class="toc__title font-weight-bold">Table of Contents</h4>
+
+  <ul class="toc__list">
+    <li class="toc__item"><a class="toc__link" href="#introduction">Introduction</a></li>
+
+    
+
+    
+
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-methods">Methods</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="bitArrayToNumber" href="#bitArrayToNumber">bitArrayToNumber</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="bitArrayToString" href="#bitArrayToString">bitArrayToString</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="bitStringToBitArray" href="#bitStringToBitArray">bitStringToBitArray</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="deepEqual" href="#deepEqual">deepEqual</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="generateRandomBitString" href="#generateRandomBitString">generateRandomBitString</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="generateUUIDv4" href="#generateUUIDv4">generateUUIDv4</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="numberToBitArray" href="#numberToBitArray">numberToBitArray</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+
+    
+  </ul>
+
+</nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  </main>
+</div>
+
+<script src="scripts/ready.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/toc.js"></script>
+
+<link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
+<script src="scripts/highlight.min.js"></script>
+<!--<script src="scripts/linenumber.js"></script>-->
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>

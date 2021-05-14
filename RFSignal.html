@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>RFSignal - Homey RFDriver</title>
+
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png" />
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="preload" as="image" href="images/logo.png">
+  <link rel="preload" href="styles/homey.min.css" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="styles/atom-one-light.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+</head>
+
+<body>
+<div class="container">
+  <nav class="navigation container__navigation component">
+    <header class="navigation__header">
+                <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
+                <h2 class="navigation__title"><a href="index.html">Homey RFDriver</a></h2>
+                <button data-navigation-toggle class="navigation__button" title="menu"></button>
+             </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
+            <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
+            <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-search-key="rfdevice" class="nav-group__item"><a href="RFDevice.html">RFDevice</a></li><li data-search-key="rfdriver" class="nav-group__item"><a href="RFDriver.html">RFDriver</a></li><li data-search-key="rferror" class="nav-group__item"><a href="RFError.html">RFError</a></li><li data-search-key="rfsignal" class="nav-group__item"><a href="RFSignal.html">RFSignal</a></li><li data-search-key="rfutil" class="nav-group__item"><a href="RFUtil.html">RFUtil</a></li></ul></nav></div></div></div>
+  </nav>
+
+  <main id="main" class="main container__main">
+    
+  
+  
+  <div class="flex flex-direction-column flex-fill max-100">
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <h1 id="introduction" class="text-preset-heading-1">
+            RFSignal
+          </h1>
+        </div>
+        <div class="main__index"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <section>
+  <header>
+    
+      <h2 class="display-none">
+        
+        <span class="attribs"><span class="function__type-signature"></span></span>
+        
+        RFSignal
+        
+      </h2>
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+      
+
+
+<section id="RFSignal" class="method trim ">
+  
+
+  
+
+</section>
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section id="section-members">
+      <h2 class="subsection-title">Properties</h2>
+
+      
+      
+<section id="FREQUENCY" class="method component trim">
+  <h3 class="method__name">FREQUENCY</h3>
+  <span class="method__function function">
+    <span class="function__type-signature"></span>FREQUENCY<span class="function__type-signature">: '433'|'868'|'ir'</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">'433'</span>
+|
+
+<span class="param-type">'868'</span>
+|
+
+<span class="param-type">'ir'</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id="ID" class="method component trim">
+  <h3 class="method__name">ID</h3>
+  <span class="method__function function">
+    <span class="function__type-signature"></span>ID<span class="function__type-signature">: string</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">string</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+    </section>
+    
+
+    
+    <section id="section-methods">
+      <h2 class="subsection-title">Methods</h2>
+
+      
+      
+
+
+<section id=".commandToDeviceData" class="method trim component">
+  
+
+  
+  <h3 class="method__name">commandToDeviceData</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>commandToDeviceData<span class="function__parameters">(<span class="function__parameter">command</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".commandToPayload" class="method trim component">
+  
+
+  
+  <h3 class="method__name">commandToPayload</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>commandToPayload<span class="function__parameters">(<span class="function__parameter">props</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>props</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".createPairCommand" class="method trim component">
+  
+
+  
+  <h3 class="method__name">createPairCommand</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>createPairCommand<span class="function__parameters">()</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+
+</section>
+
+      
+      
+
+
+<section id=".payloadToCommand" class="method trim component">
+  
+
+  
+  <h3 class="method__name">payloadToCommand</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>payloadToCommand<span class="function__parameters">(<span class="function__parameter">props</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>props</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="cmd" class="method trim component">
+  
+
+  
+  <h3 class="method__name">cmd</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>cmd<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">string</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>props</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onRX" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onRX</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onRX<span class="function__parameters">(<span class="function__parameter">payload</span>, <span class="function__parameter">isFirst</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>payload</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>isFirst</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">boolean</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="registerRXListener" class="method trim component">
+  
+
+  
+  <h3 class="method__name">registerRXListener</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>registerRXListener<span class="function__parameters">(<span class="function__parameter">listener</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>listener</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">function</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="tx" class="method trim component">
+  
+
+  
+  <h3 class="method__name">tx</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>tx<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">string</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>props</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="unregisterRXListener" class="method trim component">
+  
+
+  
+  <h3 class="method__name">unregisterRXListener</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>unregisterRXListener<span class="function__parameters">(<span class="function__parameter">listener</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>listener</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">function</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+    </section>
+    
+
+    
+
+    
+  </article>
+
+</section>
+        </div>
+        <div class="main__index">
+          
+<nav class="toc trim">
+  <h4 class="toc__title font-weight-bold">Table of Contents</h4>
+
+  <ul class="toc__list">
+    <li class="toc__item"><a class="toc__link" href="#introduction">Introduction</a></li>
+
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-members">Properties</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="FREQUENCY" href="#FREQUENCY">FREQUENCY</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="ID" href="#ID">ID</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-methods">Methods</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="commandToDeviceData" href="#commandToDeviceData">commandToDeviceData</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="commandToPayload" href="#commandToPayload">commandToPayload</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="createPairCommand" href="#createPairCommand">createPairCommand</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="payloadToCommand" href="#payloadToCommand">payloadToCommand</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="cmd" href="#cmd">cmd</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onRX" href="#onRX">onRX</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="registerRXListener" href="#registerRXListener">registerRXListener</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="tx" href="#tx">tx</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="unregisterRXListener" href="#unregisterRXListener">unregisterRXListener</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+
+    
+  </ul>
+
+</nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  </main>
+</div>
+
+<script src="scripts/ready.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/toc.js"></script>
+
+<link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
+<script src="scripts/highlight.min.js"></script>
+<!--<script src="scripts/linenumber.js"></script>-->
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>

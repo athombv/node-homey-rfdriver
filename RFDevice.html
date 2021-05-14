@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>RFDevice - Homey RFDriver</title>
+
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png" />
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png" />
+  <link rel="preload" as="image" href="images/logo.png">
+  <link rel="preload" href="styles/homey.min.css" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="styles/atom-one-light.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+</head>
+
+<body>
+<div class="container">
+  <nav class="navigation container__navigation component">
+    <header class="navigation__header">
+                <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
+                <h2 class="navigation__title"><a href="index.html">Homey RFDriver</a></h2>
+                <button data-navigation-toggle class="navigation__button" title="menu"></button>
+             </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
+            <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
+            <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-search-key="rfdevice" class="nav-group__item"><a href="RFDevice.html">RFDevice</a></li><li data-search-key="rfdriver" class="nav-group__item"><a href="RFDriver.html">RFDriver</a></li><li data-search-key="rferror" class="nav-group__item"><a href="RFError.html">RFError</a></li><li data-search-key="rfsignal" class="nav-group__item"><a href="RFSignal.html">RFSignal</a></li><li data-search-key="rfutil" class="nav-group__item"><a href="RFUtil.html">RFUtil</a></li></ul></nav></div></div></div>
+  </nav>
+
+  <main id="main" class="main container__main">
+    
+  
+  
+  <div class="flex flex-direction-column flex-fill max-100">
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <h1 id="introduction" class="text-preset-heading-1">
+            RFDevice
+          </h1>
+        </div>
+        <div class="main__index"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <section>
+  <header>
+    
+      <h2 class="display-none">
+        
+        <span class="attribs"><span class="function__type-signature"></span></span>
+        
+        RFDevice
+        
+      </h2>
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+      
+
+
+<section id="RFDevice" class="method trim ">
+  
+
+  
+
+</section>
+
+      
+    </div>
+
+    
+    <section id="section-extends">
+      <h2 class="subsection-title">Extends</h2>
+
+      
+
+
+    <ul>
+        <li>Homey.Device</li>
+    </ul>
+
+
+    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section id="section-members">
+      <h2 class="subsection-title">Properties</h2>
+
+      
+      
+<section id="CAPABILITIES" class="method component trim">
+  <h3 class="method__name">CAPABILITIES</h3>
+  <span class="method__function function">
+    <span class="function__type-signature"></span>CAPABILITIES<span class="function__type-signature">: object</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">object</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id="RX_ENABLED" class="method component trim">
+  <h3 class="method__name">RX_ENABLED</h3>
+  <span class="method__function function">
+    <span class="function__type-signature"></span>RX_ENABLED<span class="function__type-signature">: boolean</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">boolean</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+    </section>
+    
+
+    
+    <section id="section-methods">
+      <h2 class="subsection-title">Methods</h2>
+
+      
+      
+
+
+<section id="onCapability" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onCapability</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onCapability<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">value</span>, <span class="function__parameter">opts</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Device-specific methods</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>capabilityId</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">string</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>value</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">*</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>opts</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onCommand" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onCommand</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onCommand<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">args</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>args</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+        <h6>Properties</h6>
+        
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>isFirst</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">boolean</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onCommandFirst" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onCommandFirst</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onCommandFirst<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">flags</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>flags</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onCommandMatch" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onCommandMatch</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onCommandMatch<span class="function__parameters">(<span class="function__parameter">command</span>)</span><span class="function__type-signature">:  Promise.&lt;*></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;*></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onDeleted" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onDeleted</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onDeleted<span class="function__parameters">()</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onInit" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onInit</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onInit<span class="function__parameters">()</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Do not use this method, but use <a href="RFDevice.html#onRFInit">RFDevice#onRFInit</a> instead.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onRFDeleted" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onRFDeleted</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onRFDeleted<span class="function__parameters">()</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onRFInit" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onRFInit</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onRFInit<span class="function__parameters">()</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id="onRX" class="method trim component">
+  
+
+  
+  <h3 class="method__name">onRX</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>onRX<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">args</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>command</code></td>
+      
+
+      <td class="type">
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>args</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+        <h6>Properties</h6>
+        
+
+<figure class="table-container trim">
+  <table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    <tr>
+      
+      <td class="name"><code>isFirst</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">boolean</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+
+    <tr>
+      
+      <td class="name"><code>flags</code></td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+      </td>
+
+      
+
+      
+
+      <td class="description last trim">
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+        
+      </td>
+    </tr>
+
+    
+    </tbody>
+  </table>
+</figure>
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+    </section>
+    
+
+    
+
+    
+  </article>
+
+</section>
+        </div>
+        <div class="main__index">
+          
+<nav class="toc trim">
+  <h4 class="toc__title font-weight-bold">Table of Contents</h4>
+
+  <ul class="toc__list">
+    <li class="toc__item"><a class="toc__link" href="#introduction">Introduction</a></li>
+
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-members">Properties</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="CAPABILITIES" href="#CAPABILITIES">CAPABILITIES</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="RX_ENABLED" href="#RX_ENABLED">RX_ENABLED</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-extends">Extends</a>
+    </li>
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-methods">Methods</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onCapability" href="#onCapability">onCapability</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onCommand" href="#onCommand">onCommand</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onCommandFirst" href="#onCommandFirst">onCommandFirst</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onCommandMatch" href="#onCommandMatch">onCommandMatch</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onDeleted" href="#onDeleted">onDeleted</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onInit" href="#onInit">onInit</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onRFDeleted" href="#onRFDeleted">onRFDeleted</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onRFInit" href="#onRFInit">onRFInit</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="onRX" href="#onRX">onRX</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+
+    
+  </ul>
+
+</nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  </main>
+</div>
+
+<script src="scripts/ready.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/toc.js"></script>
+
+<link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
+<script src="scripts/highlight.min.js"></script>
+<!--<script src="scripts/linenumber.js"></script>-->
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>
