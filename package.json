@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "serve": "concurrently \"serve build/docs/\" \"npm run build:watch\"",
-    "build": "jsdoc --configure ./docs/jsdoc.json",
-    "build:clean": "rm -rf ./build",
-    "build:watch": "watch \"npm run build:clean && npm run build\" lib docs \"node_modules/homey-jsdoc-template\""
+    "serve": "concurrently \"serve build/\" \"npm run build:watch\"",
+    "build": "npm run jsdoc:clean; npm run jsdoc;",
+    "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
+    "jsdoc:clean": "rm -rf ./build",
+    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" lib docs \"node_modules/homey-jsdoc-template\""
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
     "concurrently": "^5.1.0",
     "eslint": "^7.0.0",
     "eslint-config-athom": "^2.1.0",
-    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.0.3",
+    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.0.5",
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
     "npm-watch": "^0.6.0",

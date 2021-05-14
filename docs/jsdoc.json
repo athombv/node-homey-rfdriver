@@ -12,7 +12,7 @@
   },
   "opts": {
     "mainpagetitle": "Homey RFDriver",
-    "destination": "./build/docs",
+    "destination": "./build",
     "template": "./node_modules/homey-jsdoc-template"
   },
   "tsUtils": {
