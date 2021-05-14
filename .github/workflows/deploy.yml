@@ -1,4 +1,4 @@
-name: NPM
+name: Deploy
 
 # About this workflow:
 # It is triggered on push events to branches production and testing. Then it performs a checkout of the current repo
@@ -14,21 +14,7 @@ name: NPM
 # 2. If you have protected branches, go to Branches > edit protected branch > enable 'Restrict who can push to
 #    matching branches' and add the 'athombv/github-actions' team.
 
-# Required secrets:
-# - NPM_AUTH_TOKEN: required for publishing to npm
-# - SLACK_WEBHOOK_URL: required for posting a message in #software
-# - HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN: required when using `npm version` to commit and push to protected
-#   branch. If pushing to a non-protected branch replace HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN with GITHUB_TOKEN
-
-# Optional secrets:
-# - SSH_KEY: required if `npm ci` needs to install private npm packages
-
 # Note: make sure to commit package-lock.json, this is needed for `npm ci`.
-
-# Note: add `.github` to .npmignore
-
-# Note: when publishing a scoped npm package (e.g. @athombv/node-my-package) append `--access public` to the `npm publish` command, by default scoped packages are published privately.
-# For more information see: https://docs.npmjs.com/creating-and-publishing-an-org-scoped-package
 
 # Defines the trigger for this action, in general you want it to run when pushing to production | testing. For more
 # information see: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#about-workflow-events)
@@ -44,8 +30,8 @@ on:
         required: true
 
 jobs:
-  npm_version_bump_and_publish:
-    name: Update version and publish
+  deploy_to_npm:
+    name: Deploy to NPM
 
     # Only run this job if initiator is not the Homey Github Actions Bot to prevent loops and check if if a version bump is provided and current branch is production or testing
     if: github.actor != 'HomeyGithubActionsBot'
@@ -76,17 +62,11 @@ jobs:
           # Needed for publishing to npm
           registry-url: 'https://registry.npmjs.org'
 
-      # Set SSH key
-      - uses: webfactory/ssh-agent@v0.4.1
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-        if: env.SSH_KEY != null
-        with:
-          ssh-private-key: ${{ env.SSH_KEY }}
-
-      # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
+      # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
-        run: npm ci
+        run: |
+          npm ci
+          npm run build
 
       - name: Version bump patch
         if: github.event.inputs.versionBumpType == 'patch' || contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')
@@ -109,18 +89,17 @@ jobs:
           git pull
           git push --follow-tags
 
-      # Publish when this action is running on branch production (when publishing a scoped package add --access public)
+      # Publish when this action is running on branch production
       - name: Publish
         if: github.ref == 'refs/heads/production'
         run: |
           npm publish
           VERSION="$(node -p "require('./package.json').version")"
           echo package_version=${VERSION} >> $GITHUB_ENV
-          echo $package_version
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
-      # Publish to beta when this action is running on branch testing (when publishing a scoped package add --access public)
+      # Publish to beta when this action is running on branch testing
       - name: Publish to beta
         if: github.ref == 'refs/heads/testing'
         run: |
@@ -129,15 +108,3 @@ jobs:
           echo package_version=${VERSION} >> $GITHUB_ENV
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
-      # Post a Slack notification in #software on success/failure
-      - name: Slack notify
-        if: always()
-        uses: innocarpe/actions-slack@v1
-        with:
-          status: ${{ job.status }}
-          success_text: '${{github.repository}} - published v${{env.package_version}} to npm 🚀'
-          failure_text: '${{github.repository}} - failed to publish to npm'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # Required
