@@ -11,6 +11,7 @@
     ]
   },
   "opts": {
+    "simpleAnalyticsHost": "sa.athom.com",
     "mainpagetitle": "Homey RFDriver",
     "destination": "./build",
     "template": "./node_modules/homey-jsdoc-template"
