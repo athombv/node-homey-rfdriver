@@ -4,20 +4,75 @@
   <meta charset="utf-8">
   <title>RFSignal - Homey RFDriver</title>
 
-  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png" />
-  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png" />
-  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png" />
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png"/>
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png"/>
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png"/>
   <link rel="preload" as="image" href="images/logo.png">
   <link rel="preload" href="styles/homey.min.css" as="style">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="styles/atom-one-light.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
-        rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+    rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+
+  <!-- preload javascript -->
+  <link rel="preload" as="script" href="scripts/ready.js">
+  <link rel="preload" as="script" href="scripts/navigation.js">
+  <link rel="preload" as="script" href="scripts/toc.js">
+  <link rel="preload" as="script" href="scripts/table.js">
+  <link rel="preload" as="script" href="scripts/hash-link.js">
+  <link rel="preload" as="script" href="scripts/docs-nav.js">
 </head>
 
 <body>
 <div class="container">
+  <div class="container__docs-nav">
+    <div class="docs-nav">
+      <button data-docs-nav-toggle class="docs-nav__button" title="All documentation"><span
+          class="docs-nav__button-icon --mask"></span></button>
+      <nav data-docs-nav-menu class="docs-nav__menu component">
+        <div class="docs-nav__banner trim">
+          <h2>Homey Developers</h2>
+        </div>
+        <div class="docs-nav__columns">
+          <div class="docs-nav__column trim">
+            <h3>Homey Apps SDK</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
+            </ul>
+            <h3>Homey Web API</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-api/">Reference</a></li>
+            </ul>
+            <h3>Tools</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer Tools</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__column trim">
+            <h3>Node.js Modules</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zigbeedriver/">Homey
+                  ZigbeeDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zwavedriver/">Homey
+                  ZWaveDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey RFDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey Log</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee Clusters</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey OAuth2</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
   <nav class="navigation container__navigation component">
     <header class="navigation__header">
                 <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
@@ -26,7 +81,7 @@
              </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
             <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
             <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
-           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-lvl="0" data-search-key="rfdevice" class="nav-group__item"><a href="RFDevice.html"> RFDevice</a></li><li data-lvl="0" data-search-key="rfdriver" class="nav-group__item"><a href="RFDriver.html"> RFDriver</a></li><li data-lvl="0" data-search-key="rferror" class="nav-group__item"><a href="RFError.html"> RFError</a></li><li data-lvl="0" data-search-key="rfsignal" class="nav-group__item"><a href="RFSignal.html"> RFSignal</a></li><li data-lvl="0" data-search-key="rfutil" class="nav-group__item"><a href="RFUtil.html"> RFUtil</a></li></ul></nav></div></div></div>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div data-navigation class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-lvl="0" data-search-key="rfdevice" class="nav-group__item"><a href="RFDevice.html"> RFDevice</a></li><li data-lvl="0" data-search-key="rfdriver" class="nav-group__item"><a href="RFDriver.html"> RFDriver</a></li><li data-lvl="0" data-search-key="rferror" class="nav-group__item"><a href="RFError.html"> RFError</a></li><li data-lvl="0" data-search-key="rfsignal" class="nav-group__item"><a href="RFSignal.html"> RFSignal</a></li><li data-lvl="0" data-search-key="rfutil" class="nav-group__item"><a href="RFUtil.html"> RFUtil</a></li></ul></nav></div></div></div>
   </nav>
 
   <main id="main" class="main container__main">
@@ -47,7 +102,9 @@
     <div class="flex">
       <div class="main__center">
         <div class="main__content align-baseline">
-          <section>
+          
+
+<section>
   <header>
     
       <h2 class="display-none">
@@ -96,7 +153,7 @@
       
       
 <section id="FREQUENCY" class="method component trim">
-  <h3 class="method__name">FREQUENCY</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#FREQUENCY"></a>FREQUENCY</h3>
   <span class="method__function function">
     <span class="function__type-signature"></span>FREQUENCY<span class="function__type-signature">: '433'|'868'|'ir'</span>
   </span>
@@ -138,7 +195,7 @@
       
       
 <section id="ID" class="method component trim">
-  <h3 class="method__name">ID</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#ID"></a>ID</h3>
   <span class="method__function function">
     <span class="function__type-signature"></span>ID<span class="function__type-signature">: string</span>
   </span>
@@ -187,7 +244,7 @@
   
 
   
-  <h3 class="method__name">commandToDeviceData</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.commandToDeviceData"></a>commandToDeviceData</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(static) </span>commandToDeviceData<span class="function__parameters">(<span class="function__parameter">command</span>)</span><span class="function__type-signature"></span>
@@ -310,7 +367,7 @@
   
 
   
-  <h3 class="method__name">commandToPayload</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.commandToPayload"></a>commandToPayload</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(static) </span>commandToPayload<span class="function__parameters">(<span class="function__parameter">props</span>)</span><span class="function__type-signature"></span>
@@ -433,7 +490,7 @@
   
 
   
-  <h3 class="method__name">createPairCommand</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.createPairCommand"></a>createPairCommand</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(static) </span>createPairCommand<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -456,7 +513,7 @@
   
 
   
-  <h3 class="method__name">payloadToCommand</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.payloadToCommand"></a>payloadToCommand</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(static) </span>payloadToCommand<span class="function__parameters">(<span class="function__parameter">props</span>)</span><span class="function__type-signature"></span>
@@ -579,7 +636,7 @@
   
 
   
-  <h3 class="method__name">cmd</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#cmd"></a>cmd</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>cmd<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -752,7 +809,7 @@
   
 
   
-  <h3 class="method__name">onRX</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#onRX"></a>onRX</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>onRX<span class="function__parameters">(<span class="function__parameter">payload</span>, <span class="function__parameter">isFirst</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -920,7 +977,7 @@
   
 
   
-  <h3 class="method__name">registerRXListener</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerRXListener"></a>registerRXListener</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>registerRXListener<span class="function__parameters">(<span class="function__parameter">listener</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -1057,7 +1114,7 @@
   
 
   
-  <h3 class="method__name">tx</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#tx"></a>tx</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>tx<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -1230,7 +1287,7 @@
   
 
   
-  <h3 class="method__name">unregisterRXListener</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#unregisterRXListener"></a>unregisterRXListener</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>unregisterRXListener<span class="function__parameters">(<span class="function__parameter">listener</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -1369,6 +1426,7 @@
   </article>
 
 </section>
+
         </div>
         <div class="main__index">
           
@@ -1466,6 +1524,8 @@
 <script src="scripts/navigation.js"></script>
 <script src="scripts/toc.js"></script>
 <script src="scripts/table.js"></script>
+<script src="scripts/hash-link.js"></script>
+<script src="scripts/docs-nav.js"></script>
 
 <link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
 <script src="scripts/highlight.min.js"></script>
