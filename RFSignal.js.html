@@ -98,16 +98,22 @@
         <article>
             <pre class="source linenums"><code>'use strict';
 
+const Homey = require('homey');
+
 /**
  * @hideconstructor
  */
 class RFSignal {
 
-  /** @type {string} */
+  /**
+   * @type {string}
+   * @static
+   */
   static ID = null;
 
   /**
    * @type {'433'|'868'|'ir'}
+   * @static
    * */
   static FREQUENCY = null;
 
@@ -135,9 +141,16 @@ class RFSignal {
         throw new Error(`Invalid Signal Frequency: ${this.constructor.FREQUENCY}`);
     }
 
+    /**
+     * @type {object}
+     * @description The Signal's manifest
+     */
+    this.manifest = Homey.manifest.signals[this.constructor.FREQUENCY][this.constructor.ID];
+
     this.signal.on('payload', this.onRX);
     this.rxListeners = new Set();
   }
+
 
   /**
    * @param {Function} listener
