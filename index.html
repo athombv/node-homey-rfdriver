@@ -249,9 +249,49 @@ module.exports = class extends RFDriver {
   }
 ]
 </code></pre>
-<blockquote>
-<p>To present the user with a choice whether to copy a remote, or let Homey generate a new code, use the <code>/pair/rf_receiver_copy_or_create.html</code> template. Then include both <em>receiver</em> and <em>transmitter</em> pair in your <code>driver.compose.json</code>.</p>
-</blockquote>
+<h4>Receiver + Learn</h4>
+<p>Some devices, such as built-in modules, are hard to reach when pairing. For such devices, you can let the user choose whether to generate a new signal, or copy from an existing remote.</p>
+<p>Follow the instructions for <em>Receiver</em>, but additionally copy <code>/pair/rf_transmitter_learn.html</code> to your driver's <code>/pair</code> folder.</p>
+<p>Then, modify this to your <code>/drivers/&lt;driver_id&gt;/driver.compose.json</code>:</p>
+<pre class="prettyprint source lang-json"><code>&quot;pair&quot;: [
+  {
+    &quot;id&quot;: &quot;rf_receiver_learn&quot;,
+    &quot;navigation&quot;: {
+      &quot;next&quot;: &quot;rf_receiver_add&quot;
+    },
+    &quot;options&quot;: {
+      &quot;title&quot;: {
+        &quot;en&quot;: &quot;Press the button...&quot;
+      },
+      &quot;instruction&quot;: {
+        &quot;en&quot;: &quot;Press the button on your device once.&quot;
+      },
+      &quot;copyFromRemote&quot;: {
+        &quot;en&quot;: &quot;Copy from Remote&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;rf_transmitter_learn&quot;,
+    &quot;options&quot;: {
+      &quot;instruction&quot;: {
+        &quot;en&quot;: &quot;Press any button on your remote.&quot;
+      }
+    },
+    &quot;navigation&quot;: {
+      &quot;prev&quot;: &quot;rf_receiver_learn&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;rf_receiver_add&quot;,
+    &quot;options&quot;: {
+      &quot;instruction&quot;: {
+        &quot;en&quot;: &quot;Did the device turn off and on?&quot;
+      }
+    }
+  }
+]
+</code></pre>
 <h4>IR Remote</h4>
 <p>Copy <code>/pair/rf_ir_remote_learn.html</code> and <code>/pair/rf_ir_remote_add</code> to your driver's <code>/pair</code> folder.</p>
 <p>Then add this to your <code>/drivers/&lt;driver_id&gt;/driver.compose.json</code>:</p>
