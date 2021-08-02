@@ -184,7 +184,54 @@ Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 ]
 ```
 
-> To present the user with a choice whether to copy a remote, or let Homey generate a new code, use the `/pair/rf_receiver_copy_or_create.html` template. Then include both _receiver_ and _transmitter_ pair in your `driver.compose.json`.
+#### Receiver + Learn
+
+Some devices, such as built-in modules, are hard to reach when pairing. For such devices, you can let the user choose whether to generate a new signal, or copy from an existing remote.
+
+Follow the instructions for _Receiver_, but additionally copy `/pair/rf_transmitter_learn.html` to your driver's `/pair` folder.
+
+Then, modify this to your `/drivers/<driver_id>/driver.compose.json`:
+
+```json
+"pair": [
+  {
+    "id": "rf_receiver_learn",
+    "navigation": {
+      "next": "rf_receiver_add"
+    },
+    "options": {
+      "title": {
+        "en": "Press the button..."
+      },
+      "instruction": {
+        "en": "Press the button on your device once."
+      },
+      "copyFromRemote": {
+        "en": "Copy from Remote"
+      }
+    }
+  },
+  {
+    "id": "rf_transmitter_learn",
+    "options": {
+      "instruction": {
+        "en": "Press any button on your remote."
+      }
+    },
+    "navigation": {
+      "prev": "rf_receiver_learn"
+    }
+  },
+  {
+    "id": "rf_receiver_add",
+    "options": {
+      "instruction": {
+        "en": "Did the device turn off and on?"
+      }
+    }
+  }
+]
+```
 
 #### IR Remote
 
