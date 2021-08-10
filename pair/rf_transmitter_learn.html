@@ -1,5 +1,5 @@
 <style type="text/css">
-  #rf-receiver-learn-wrap {
+  #rf-transmitter-learn-wrap {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
     box-sizing: border-box;
   }
 
-  #rf-receiver-learn-image {
+  #rf-transmitter-learn-image {
     display: block;
     width: 80vw;
     height: 80vw;
@@ -17,23 +17,23 @@
     background-size: contain;
   }
 
-  #rf-receiver-learn-instruction {
+  #rf-transmitter-learn-instruction {
     display: block;
     text-align: center;
     font-weight: 400;
   }
 </style>
 
-<div id="rf-receiver-learn-wrap">
+<div id="rf-transmitter-learn-wrap">
 
-  <div id="rf-receiver-learn-image"></div>
-  <p id="rf-receiver-learn-instruction"></p>
+  <div id="rf-transmitter-learn-image"></div>
+  <p id="rf-transmitter-learn-instruction"></p>
 
 </div>
 
 <script type="text/javascript">
   (function () {
-    const $instruction = document.getElementById('rf-receiver-learn-instruction');
+    const $instruction = document.getElementById('rf-transmitter-learn-instruction');
 
     Homey.getOptions((err, options) => {
       if (err) return Homey.error(err);
