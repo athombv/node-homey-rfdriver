@@ -143,8 +143,9 @@ class RFDevice extends Homey.Device {
 
     this.driver = this.driver || this.getDriver();
 
-    // Enable RX if this Driver uses RX
-    if (this.constructor.RX_ENABLED) {
+    // Enable RX if this Driver uses RX or if the command was copied from a remote
+    // with the 'copiedFromRemote' param
+    if (this.constructor.RX_ENABLED || this.getData().copiedFromRemote === true) {
       await this.driver.enableRX(this.onRX);
     }
 
