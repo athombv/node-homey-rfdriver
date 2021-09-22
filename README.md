@@ -269,7 +269,7 @@ Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 ```javascript
 const { RFDevice } = require('homey-rfdriver');
 
-module.exports = class extends RFDriver {
+module.exports = class extends RFDevice {
 
   static RX_ENABLED = false; // Set to true for transmitter devices
 
