@@ -284,6 +284,9 @@ module.exports = class extends RFDriver {
   },
   {
     &quot;id&quot;: &quot;rf_receiver_add&quot;,
+    &quot;navigation&quot;: {
+      &quot;prev&quot;: &quot;rf_receiver_learn&quot;
+    },
     &quot;options&quot;: {
       &quot;instruction&quot;: {
         &quot;en&quot;: &quot;Did the device turn off and on?&quot;
@@ -320,7 +323,7 @@ module.exports = class extends RFDriver {
 <p><code>/drivers/my_driver/device.js</code></p>
 <pre class="prettyprint source lang-javascript"><code>const { RFDevice } = require('homey-rfdriver');
 
-module.exports = class extends RFDriver {
+module.exports = class extends RFDevice {
 
   static RX_ENABLED = false; // Set to true for transmitter devices
 
