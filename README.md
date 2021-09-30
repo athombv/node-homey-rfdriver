@@ -224,6 +224,9 @@ Then, modify this to your `/drivers/<driver_id>/driver.compose.json`:
   },
   {
     "id": "rf_receiver_add",
+    "navigation": {
+      "prev": "rf_receiver_learn"
+    },
     "options": {
       "instruction": {
         "en": "Did the device turn off and on?"
@@ -269,7 +272,7 @@ Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 ```javascript
 const { RFDevice } = require('homey-rfdriver');
 
-module.exports = class extends RFDriver {
+module.exports = class extends RFDevice {
 
   static RX_ENABLED = false; // Set to true for transmitter devices
 
