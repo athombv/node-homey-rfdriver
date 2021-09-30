@@ -224,6 +224,9 @@ Then, modify this to your `/drivers/<driver_id>/driver.compose.json`:
   },
   {
     "id": "rf_receiver_add",
+    "navigation": {
+      "prev": "rf_receiver_learn"
+    },
     "options": {
       "instruction": {
         "en": "Did the device turn off and on?"
