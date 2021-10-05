@@ -159,16 +159,27 @@ class RFDevice extends Homey.Device {
     // Overload Me
   }
 
-  /**
-   * @returns {Promise&lt;void>}
-   */
-  async onDeleted() {
+  async onUninit() {
     // Disable RX if this Driver uses RX or if the command was copied from a remote
     // with the 'copiedFromRemote' param
     if (this.constructor.RX_ENABLED || this.getData().copiedFromRemote === true) {
       await this.driver.disableRX(this.onRX);
     }
 
+    await this.onRFUninit();
+  }
+
+  /**
+   * @returns {Promise&lt;void>}
+   */
+  async onRFUninit() {
+    // Overload Me
+  }
+
+  /**
+   * @returns {Promise&lt;void>}
+   */
+  async onDeleted() {
     await this.onRFDeleted();
   }
 

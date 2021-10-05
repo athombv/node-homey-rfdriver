@@ -137,6 +137,17 @@ class RFDriver extends Homey.Driver {
     // Overload Me
   }
 
+  async onUninit() {
+    await this.onRFUninit();
+  }
+
+  /**
+   * @returns {Promise&lt;void>}
+   */
+  async onRFUninit() {
+    // Overload Me
+  }
+
   /**
    * @returns {Promise&lt;*>}
    */
