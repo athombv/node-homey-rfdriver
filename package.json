@@ -1,6 +1,6 @@
 {
   "name": "homey-rfdriver",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "Helper module for RF (433MHz, 868MHz, Infrared) apps for Homey",
   "main": "index.js",
   "scripts": {
