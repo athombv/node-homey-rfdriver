@@ -57,7 +57,7 @@ Our signal definition must be added to `/.homeycompose/signals/433/my_signal.jso
 Your JSON describes how to encode and decode the low & high signals into bits.
 The RFSignal you define here will parse these bits (or bytes) from and to JavaScript objects.
 
-`/lib/my_signal.js`
+`/lib/MySignal.js`
 
 ```javascript
 'use strict';
@@ -68,7 +68,7 @@ const { RFSignal, RFError, RFUtil } = require('homey-rfdriver');
 // [ 0x00 - 0xFF, 0x00 | 0xFF ]
 // [ address    , state       ]
 
-module.exports = class extends RFSignal {
+module.exports = class MySignal extends RFSignal {
 
   static FREQUENCY = '433';
   static ID = 'my_signal';
@@ -122,7 +122,7 @@ module.exports = class extends RFSignal {
 const { RFDriver } = require('homey-rfdriver');
 const MySignal = require('../../lib/MySignal');
 
-module.exports = class extends RFDriver {
+module.exports = class MyDriver extends RFDriver {
 
   static SIGNAL = MySignal;
 
@@ -272,7 +272,7 @@ Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 ```javascript
 const { RFDevice } = require('homey-rfdriver');
 
-module.exports = class extends RFDevice {
+module.exports = class MyDevice extends RFDevice {
 
   static RX_ENABLED = false; // Set to true for transmitter devices
 

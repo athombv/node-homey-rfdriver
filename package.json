@@ -1,16 +1,20 @@
 {
   "name": "homey-rfdriver",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Helper module for RF (433MHz, 868MHz, Infrared) apps for Homey",
   "main": "index.js",
+  "files": [
+    "./index.js",
+    "./lib/",
+    "./pair/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "serve": "concurrently \"serve build/\" \"npm run jsdoc:watch\"",
-    "build": "npm run jsdoc:clean; npm run jsdoc;",
-    "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
-    "jsdoc:clean": "rm -rf ./build",
-    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" lib docs \"node_modules/homey-jsdoc-template\""
+    "jsdoc": "jsdoc --configure ./jsdoc.json;",
+    "jsdoc:serve": "serve ./jsdoc",
+    "jsdoc:clean": "rm -rf ./jsdoc",
+    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" lib docs \"node_modules/@athombv/jsdoc-template\""
   },
   "repository": {
     "type": "git",
@@ -22,10 +26,10 @@
   },
   "homepage": "https://github.com/athombv/node-homey-rfdriver#readme",
   "devDependencies": {
+    "@athombv/jsdoc-template": "^1.6.1",
     "concurrently": "^5.1.0",
     "eslint": "^7.0.0",
     "eslint-config-athom": "^2.1.0",
-    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.4",
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
     "npm-watch": "^0.6.0",
