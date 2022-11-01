@@ -23,11 +23,26 @@
   <link rel="preload" as="script" href="scripts/table.js">
   <link rel="preload" as="script" href="scripts/hash-link.js">
   <link rel="preload" as="script" href="scripts/docs-nav.js">
+  <link rel="preload" as="script" href="scripts/hash-highlight.js">
+  <link rel="preload" as="script" href="scripts/darkmode.js">
+
+  <!-- Start DarkMode -->
+  <script>
+    if (localStorage.getItem('darkmode') === 'true') {
+      document.documentElement.classList.add('darkmode');
+    }
+  </script>
+  <!-- End DarkMode -->
 </head>
 
 <body>
+
+
 <div class="container">
-  <div class="container__docs-nav">
+  <div class="container__top-nav">
+    <button data-darkmode-toggle class="darkmode-toggle">
+      <span class="darkmode-toggle__icon --mask"></span>
+    </button>
     <div class="docs-nav">
       <button data-docs-nav-toggle class="docs-nav__button" title="All documentation"><span
           class="docs-nav__button-icon --mask"></span></button>
@@ -39,17 +54,22 @@
           <div class="docs-nav__column trim">
             <h3>Homey Apps SDK</h3>
             <ul class="docs-nav__list">
-              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a></li>
-              <li class="docs-nav__item"><a target="_blank" href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
             </ul>
             <h3>Homey Web API</h3>
             <ul class="docs-nav__list">
-              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a></li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-api/">Reference</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://athombv.github.io/node-homey-api/">Reference</a></li>
             </ul>
             <h3>Tools</h3>
             <ul class="docs-nav__list">
-              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer Tools</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer
+                  Tools</a></li>
             </ul>
           </div>
           <div class="docs-nav__column trim">
@@ -61,12 +81,16 @@
               <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zwavedriver/">Homey
                   ZWaveDriver</a>
               </li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey RFDriver</a>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey
+                  RFDriver</a>
               </li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey Log</a></li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee Clusters</a>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey
+                  Log</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee
+                  Clusters</a>
               </li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey OAuth2</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey
+                  OAuth2</a></li>
             </ul>
           </div>
         </div>
@@ -120,6 +144,8 @@
 
   <article>
     <div class="container-overview">
+      
+
       
       
 
@@ -206,6 +232,174 @@
     
     <section id="section-methods">
       <h2 class="subsection-title">Methods</h2>
+
+      
+      
+
+
+<section id="cmd" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#cmd"></a>cmd</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>cmd<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>command</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>props</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;void></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
 
       
       
@@ -1326,7 +1520,7 @@
   <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#tx"></a>tx</h3>
   <span class="method__function function">
     
-    <span class="function__type-signature">(async) </span>tx<span class="function__parameters">(<span class="function__parameter">command</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
+    <span class="function__type-signature">(async) </span>tx<span class="function__parameters">(<span class="function__parameter">payload</span>, <span class="function__parameter">props</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
     
   </span>
   
@@ -1375,7 +1569,7 @@
         <div class="lvl">
           
         </div>
-        <code>command</code>
+        <code>payload</code>
         
       </td>
       
@@ -1507,6 +1701,12 @@
 
     
     <li class="toc__item">
+      <a class="toc__link" href="#section-extends">Extends</a>
+    </li>
+    
+
+    
+    <li class="toc__item">
       <a class="toc__link" href="#section-members">Properties</a>
       <ul class="toc__list toc__list--lvl2">
         
@@ -1520,14 +1720,12 @@
 
     
     <li class="toc__item">
-      <a class="toc__link" href="#section-extends">Extends</a>
-    </li>
-    
-
-    
-    <li class="toc__item">
       <a class="toc__link" href="#section-methods">Methods</a>
       <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="cmd" href="#cmd">cmd</a>
+        </li>
         
         <li class="toc__item">
           <a class="toc__link" title="disableRX" href="#disableRX">disableRX</a>
@@ -1601,6 +1799,8 @@
 <script src="scripts/table.js"></script>
 <script src="scripts/hash-link.js"></script>
 <script src="scripts/docs-nav.js"></script>
+<script src="scripts/hash-highlight.js"></script>
+<script src="scripts/darkmode.js"></script>
 
 <link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
 <script src="scripts/highlight.min.js"></script>

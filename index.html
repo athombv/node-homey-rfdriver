@@ -23,11 +23,26 @@
   <link rel="preload" as="script" href="scripts/table.js">
   <link rel="preload" as="script" href="scripts/hash-link.js">
   <link rel="preload" as="script" href="scripts/docs-nav.js">
+  <link rel="preload" as="script" href="scripts/hash-highlight.js">
+  <link rel="preload" as="script" href="scripts/darkmode.js">
+
+  <!-- Start DarkMode -->
+  <script>
+    if (localStorage.getItem('darkmode') === 'true') {
+      document.documentElement.classList.add('darkmode');
+    }
+  </script>
+  <!-- End DarkMode -->
 </head>
 
 <body>
+
+
 <div class="container">
-  <div class="container__docs-nav">
+  <div class="container__top-nav">
+    <button data-darkmode-toggle class="darkmode-toggle">
+      <span class="darkmode-toggle__icon --mask"></span>
+    </button>
     <div class="docs-nav">
       <button data-docs-nav-toggle class="docs-nav__button" title="All documentation"><span
           class="docs-nav__button-icon --mask"></span></button>
@@ -39,17 +54,22 @@
           <div class="docs-nav__column trim">
             <h3>Homey Apps SDK</h3>
             <ul class="docs-nav__list">
-              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a></li>
-              <li class="docs-nav__item"><a target="_blank" href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
             </ul>
             <h3>Homey Web API</h3>
             <ul class="docs-nav__list">
-              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a></li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-api/">Reference</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://athombv.github.io/node-homey-api/">Reference</a></li>
             </ul>
             <h3>Tools</h3>
             <ul class="docs-nav__list">
-              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer Tools</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer
+                  Tools</a></li>
             </ul>
           </div>
           <div class="docs-nav__column trim">
@@ -61,12 +81,16 @@
               <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zwavedriver/">Homey
                   ZWaveDriver</a>
               </li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey RFDriver</a>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey
+                  RFDriver</a>
               </li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey Log</a></li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee Clusters</a>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey
+                  Log</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee
+                  Clusters</a>
               </li>
-              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey OAuth2</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey
+                  OAuth2</a></li>
             </ul>
           </div>
         </div>
@@ -88,6 +112,8 @@
     
   
   
+    
+  
 
 
   
@@ -95,8 +121,6 @@
   <div class="main__center">
     <div class="main__content align-baseline main-page trim">
       
-
-
 
 
     <section>
@@ -139,7 +163,7 @@
 <p>Our signal definition must be added to <code>/.homeycompose/signals/433/my_signal.json</code>. Refer to the <a href="https://apps.developer.athom.com/tutorial-Signals.html">Signal Documentation</a> for more information on how to create a signal.</p>
 <p>Your JSON describes how to encode and decode the low &amp; high signals into bits.
 The RFSignal you define here will parse these bits (or bytes) from and to JavaScript objects.</p>
-<p><code>/lib/my_signal.js</code></p>
+<p><code>/lib/MySignal.js</code></p>
 <pre class="prettyprint source lang-javascript"><code>'use strict';
 
 const { RFSignal, RFError, RFUtil } = require('homey-rfdriver');
@@ -148,7 +172,7 @@ const { RFSignal, RFError, RFUtil } = require('homey-rfdriver');
 // [ 0x00 - 0xFF, 0x00 | 0xFF ]
 // [ address    , state       ]
 
-module.exports = class extends RFSignal {
+module.exports = class MySignal extends RFSignal {
 
   static FREQUENCY = '433';
   static ID = 'my_signal';
@@ -198,7 +222,7 @@ module.exports = class extends RFSignal {
 <pre class="prettyprint source lang-javascript"><code>const { RFDriver } = require('homey-rfdriver');
 const MySignal = require('../../lib/MySignal');
 
-module.exports = class extends RFDriver {
+module.exports = class MyDriver extends RFDriver {
 
   static SIGNAL = MySignal;
 
@@ -323,7 +347,7 @@ module.exports = class extends RFDriver {
 <p><code>/drivers/my_driver/device.js</code></p>
 <pre class="prettyprint source lang-javascript"><code>const { RFDevice } = require('homey-rfdriver');
 
-module.exports = class extends RFDevice {
+module.exports = class MyDevice extends RFDevice {
 
   static RX_ENABLED = false; // Set to true for transmitter devices
 
@@ -358,6 +382,8 @@ module.exports = class extends RFDevice {
 <script src="scripts/table.js"></script>
 <script src="scripts/hash-link.js"></script>
 <script src="scripts/docs-nav.js"></script>
+<script src="scripts/hash-highlight.js"></script>
+<script src="scripts/darkmode.js"></script>
 
 <link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
 <script src="scripts/highlight.min.js"></script>
