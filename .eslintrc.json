@@ -1,3 +1,7 @@
 {
-	"extends": "athom"
+	"extends": "athom",
+	"ignorePatterns": [
+		"/jsdoc/**",
+		"/node_modules/**"
+	]
 }
