@@ -136,6 +136,9 @@ Copy `/pair/rf_transmitter_learn.html` to your driver's `/pair` folder.
 Then add this to your `/drivers/<driver_id>/driver.compose.json`:
 
 ```json
+"rf433": { // Or `infrared`
+  "satelliteMode": true
+},
 "pair": [
   {
     "id": "rf_transmitter_learn",
