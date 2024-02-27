@@ -231,7 +231,10 @@ module.exports = class MyDriver extends RFDriver {
 <h4>Transmitter</h4>
 <p>Copy <code>/pair/rf_transmitter_learn.html</code> to your driver's <code>/pair</code> folder.</p>
 <p>Then add this to your <code>/drivers/&lt;driver_id&gt;/driver.compose.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>&quot;pair&quot;: [
+<pre class="prettyprint source lang-json"><code>&quot;rf433&quot;: { // Or `infrared`
+  &quot;satelliteMode&quot;: true
+},
+&quot;pair&quot;: [
   {
     &quot;id&quot;: &quot;rf_transmitter_learn&quot;,
     &quot;options&quot;: {

@@ -291,6 +291,7 @@ class RFDriver extends Homey.Driver {
       if (!activeView) return;
       if (!isFirst) return;
       if (done) return;
+      done = true;
 
       await session.emit('createDevice', {
         name: this[sRF].name,
@@ -300,8 +301,6 @@ class RFDriver extends Homey.Driver {
           copiedFromRemote: true,
         },
       });
-
-      done = true;
     };
 
     await signal.registerRXListener(listener);
