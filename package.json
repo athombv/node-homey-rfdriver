@@ -1,12 +1,12 @@
 {
   "name": "homey-rfdriver",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "Helper module for RF (433MHz, 868MHz, Infrared) apps for Homey",
   "main": "index.js",
   "files": [
-    "./index.js",
-    "./lib/",
-    "./pair/"
+    "/index.js",
+    "/lib/",
+    "/pair/"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
