@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/athombv/node-homey-rfdriver#readme",
   "devDependencies": {
-    "@athombv/jsdoc-template": "^1.6.1",
+    "@athombv/jsdoc-template": "^1.6.3",
     "concurrently": "^5.1.0",
     "eslint": "^7.0.0",
     "eslint-config-athom": "^2.1.0",
