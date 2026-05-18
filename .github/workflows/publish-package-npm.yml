@@ -34,7 +34,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: 'https://npm.pkg.github.com'
 
       # Sets package.json name & version to environment.
       - name: Get Package Info
@@ -64,8 +63,6 @@ jobs:
           else
             echo "'npm run build' does not exist. Skipping build..."
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
 
       # Configure NPM to use the NPM Registry
       - name: Configure NPM

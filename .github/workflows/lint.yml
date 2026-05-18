@@ -33,12 +33,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: 'https://npm.pkg.github.com'
 
       # Lint
       - run: |
           npm ci --ignore-scripts --audit=false
           npm run lint
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
 
